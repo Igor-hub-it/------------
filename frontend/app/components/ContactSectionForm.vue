@@ -1,4 +1,8 @@
 <script setup lang="ts">
+const props = defineProps<{
+  presetPropertyType?: string
+}>()
+
 const config = useRuntimeConfig()
 
 const propertyTypes = [
@@ -13,9 +17,18 @@ const form = reactive({
   name: '',
   email: '',
   phone: '',
-  propertyType: '',
+  propertyType: props.presetPropertyType || '',
   message: ''
 })
+
+watch(
+  () => props.presetPropertyType,
+  (value) => {
+    if (value) {
+      form.propertyType = value
+    }
+  }
+)
 
 const pending = ref(false)
 const successMessage = ref('')
@@ -43,7 +56,7 @@ async function submitForm() {
     form.name = ''
     form.email = ''
     form.phone = ''
-    form.propertyType = ''
+    form.propertyType = props.presetPropertyType || ''
     form.message = ''
   } catch (error: any) {
     console.error(error)
@@ -103,10 +116,7 @@ async function submitForm() {
           :disabled="pending"
           type="submit"
         >
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <path d="M22 2 11 13" />
-            <path d="m22 2-7 20-4-9-9-4 20-7Z" />
-          </svg>
+          <Icon class="h-5 w-5" name="lucide:send" />
           {{ pending ? 'Отправка...' : 'Отправить сообщение' }}
         </button>
 

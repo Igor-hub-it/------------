@@ -4,6 +4,7 @@ export type ServiceItem = {
   title: string
   description: string
   intro: string
+  heroBanner: string
   cardDescription: string
   useCases: string[]
   icon: 'car' | 'home' | 'building' | 'map' | 'bank'
@@ -17,6 +18,7 @@ export const services: ServiceItem[] = [
     shortTitle: 'Движимое имущество',
     title: 'Оценка движимого имущества',
     description: 'Независимая оценка оборудования, техники, транспорта и иных объектов движимого имущества.',
+    heroBanner: '/image/banner-dvizh.webp',
     cardDescription: 'Транспортные средства, оборудование, техника и другие движимые активы',
     useCases: ['Оценка залогового обеспечения кредита', 'Страховые цели', 'Раздел наследства', 'Сделки купли-продажи'],
     icon: 'car',
@@ -40,6 +42,7 @@ export const services: ServiceItem[] = [
     shortTitle: 'Нежилая недвижимость',
     title: 'Оценка нежилой недвижимости',
     description: 'Оценка офисов, складов, производственных, торговых и иных коммерческих помещений.',
+    heroBanner: '/image/banner-nezhilaya.webp',
     cardDescription: 'Офисные здания, торговые площади, склады и производственные объекты',
     useCases: ['Инвестиционный анализ', 'Переговоры по аренде', 'Управление активами', 'Финансовая отчётность'],
     icon: 'building',
@@ -63,6 +66,7 @@ export const services: ServiceItem[] = [
     shortTitle: 'Жилая недвижимость',
     title: 'Оценка жилой недвижимости',
     description: 'Оценка квартир, домов, комнат и другой жилой недвижимости для частных и юридических лиц.',
+    heroBanner: '/image/banner-zhilaya.webp',
     cardDescription: 'Дома, квартиры, кондоминиумы и жилые комплексы',
     useCases: ['Сделки купли-продажи', 'Ипотечные заявки', 'Оценка налога на имущество', 'Оценка наследства'],
     icon: 'home',
@@ -86,6 +90,7 @@ export const services: ServiceItem[] = [
     shortTitle: 'Земельный участок',
     title: 'Оценка земельного участка',
     description: 'Определение стоимости земельных участков различного назначения с учётом ограничений и потенциала использования.',
+    heroBanner: '/image/banner-zemlya.webp',
     cardDescription: 'Участки, земельные паи, строительные площадки и недостроенные объекты',
     useCases: ['Проекты развития', 'Приобретение земли', 'Зонирование', 'Сельскохозяйственная земля'],
     icon: 'map',
@@ -109,6 +114,7 @@ export const services: ServiceItem[] = [
     shortTitle: 'Кадастровая стоимость',
     title: 'Оспаривание и оценка кадастровой стоимости',
     description: 'Подготовка отчёта и сопровождение для снижения кадастровой стоимости объекта.',
+    heroBanner: '/image/banner-kadastr.webp',
     cardDescription: 'Снижение налоговой нагрузки и сопровождение пересмотра кадастровой стоимости недвижимости',
     useCases: ['Подготовка отчёта', 'Сопровождение обращения', 'Снижение налоговой базы', 'Судебное оспаривание'],
     icon: 'bank',

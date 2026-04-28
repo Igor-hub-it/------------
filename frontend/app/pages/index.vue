@@ -7,6 +7,52 @@ useSeoMeta({
     'Лендинг компании по независимой оценке жилой и коммерческой недвижимости, земельных участков и кадастровой стоимости.'
 })
 
+const mainHeroStyle = {
+  backgroundImage:
+    "linear-gradient(90deg, rgba(15, 23, 42, 0.0) 0%, rgba(15, 23, 42, 0.0) 42%, rgba(15, 23, 42, 0.0) 100%), url('/image/banner-main.webp')",
+  backgroundSize: 'cover',
+  backgroundPosition: 'center'
+}
+
+const aboutFeatureIconMap = {
+  pin: 'lucide:map-pin',
+  globe: 'lucide:globe',
+  calendar: 'lucide:calendar-days'
+} as const
+
+const keyAdvantageIconMap = {
+  user: 'lucide:user-round',
+  users: 'lucide:users-round',
+  monitor: 'lucide:monitor',
+  money: 'lucide:circle-dollar-sign',
+  document: 'lucide:file-check-2',
+  lock: 'lucide:lock-keyhole',
+  shield: 'lucide:shield-check',
+  flash: 'lucide:zap'
+} as const
+
+const reasonIconMap = {
+  pin: 'lucide:map-pinned',
+  phone: 'lucide:smartphone',
+  clock: 'lucide:clock-3',
+  users: 'lucide:users-round',
+  building: 'lucide:building-2'
+} as const
+
+const processStepIconMap = {
+  document: 'lucide:file-text',
+  pin: 'lucide:map-pin',
+  calculator: 'lucide:calculator',
+  send: 'lucide:send'
+} as const
+
+const expertHighlightIconMap = {
+  badge: 'lucide:badge-check',
+  cap: 'lucide:graduation-cap',
+  document: 'lucide:file-badge',
+  star: 'lucide:star'
+} as const
+
 const keyAdvantages = [
   {
     title: 'Обширный опыт',
@@ -274,41 +320,6 @@ const priceList = [
   }
 ]
 
-const contacts = [
-  {
-    title: 'Телефон',
-    value: '+7 913 000 00 00',
-    note: 'Пн-Пт: 9:00 - 18:00',
-    href: 'tel:+79130000000',
-    icon: 'phone'
-  },
-  {
-    title: 'Электронная почта',
-    value: 'info@example.com',
-    note: 'Ответ в течение 24 часов',
-    href: 'mailto:info@example.com',
-    icon: 'mail'
-  },
-  {
-    title: 'Адрес офиса',
-    value: 'г. Новосибирск, ул. Примерная, 12',
-    note: 'Офис для консультаций по записи',
-    icon: 'pin'
-  },
-  {
-    title: 'Часы работы',
-    value: 'Понедельник - Пятница: 9:00 - 18:00',
-    note: 'Суббота: 10:00 - 14:00',
-    icon: 'clock'
-  }
-]
-
-const urgentService = {
-  title: 'Срочная оценка?',
-  description: 'Нужна срочная оценка недвижимости? Мы предлагаем экспресс-услугу с выполнением за 48 часов.',
-  action: 'Запросить срочную услугу'
-}
-
 const aboutFeatures = [
   {
     title: 'По всей стране',
@@ -336,37 +347,43 @@ const companyStats = [
 </script>
 
 <template>
-  <div class="container-default space-y-20 py-10 sm:py-14">
-    <section id="services" class="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
-      <div>
-        <p class="section-label">Услуги по оценке недвижимости</p>
-        <h1 class="mt-4 max-w-4xl text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-          Проводим независимую оценку недвижимости для сделок, суда, банков и снижения кадастровой нагрузки
-        </h1>
-        <p class="mt-6 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg">
-          Работаем с жилой и коммерческой недвижимостью, земельными участками и задачами по кадастровой стоимости.
-          Подготавливаем отчёты и сопровождаем клиента от первой консультации до готового результата.
-        </p>
+  <div class="space-y-20 py-10 sm:py-14">
+    <section
+      id="services"
+      class="overflow-hidden py-16 sm:py-20 lg:flex lg:h-[620px] lg:items-center lg:py-0"
+      :style="mainHeroStyle"
+    >
+      <div class="container-default grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-100">Услуги по оценке недвижимости</p>
+          <h1 class="mt-4 max-w-4xl text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            Проводим независимую оценку недвижимости для сделок, суда, банков и снижения кадастровой нагрузки
+          </h1>
+          <p class="mt-6 max-w-3xl text-base leading-7 text-slate-100 sm:text-lg">
+            Работаем с жилой и коммерческой недвижимостью, земельными участками и задачами по кадастровой стоимости.
+            Подготавливаем отчёты и сопровождаем клиента от первой консультации до готового результата.
+          </p>
 
-        <div class="mt-8 flex flex-wrap gap-4">
-          <a class="button-primary" href="#contact-form">Подать заявку</a>
-          <NuxtLink class="button-secondary" to="/uslugi/kadastrovaya-stoimost">
-            Подробнее об услугах
-          </NuxtLink>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a class="button-primary" href="#contact-form">Подать заявку</a>
+            <NuxtLink class="button-secondary border-white/40 bg-white/10 text-white hover:border-white hover:bg-white/20 hover:text-white" to="/uslugi/kadastrovaya-stoimost">
+              Подробнее об услугах
+            </NuxtLink>
+          </div>
         </div>
-      </div>
 
-      <div class="section-card p-8">
-        <p class="section-label">Что входит в услугу</p>
-        <ul class="mt-6 space-y-4 text-sm leading-6 text-slate-600">
-          <li>Отчёт об оценке под конкретную задачу: сделка, суд, залог, наследство или пересмотр кадастровой стоимости.</li>
-          <li>Понятный план работ с перечнем документов, сроками и ответственным специалистом.</li>
-          <li>Поддержка по вопросам оформления заявки и передачи исходных данных онлайн.</li>
-        </ul>
+        <div class="rounded-[28px] border border-white/20 bg-white/88 p-8 shadow-xl backdrop-blur-sm">
+          <p class="section-label">Что входит в услугу</p>
+          <ul class="mt-6 space-y-4 text-sm leading-6 text-slate-700">
+            <li>Отчёт об оценке под конкретную задачу: сделка, суд, залог, наследство или пересмотр кадастровой стоимости.</li>
+            <li>Понятный план работ с перечнем документов, сроками и ответственным специалистом.</li>
+            <li>Поддержка по вопросам оформления заявки и передачи исходных данных онлайн.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section id="about" class="grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-stretch">
+    <section id="about" class="container-default grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-stretch">
       <article class="section-card p-8 lg:p-10">
         <h2 class="text-[40px] font-semibold leading-tight tracking-tight text-slate-900 max-sm:text-3xl">
           О нашей компании
@@ -386,39 +403,7 @@ const companyStats = [
         <div class="mt-8 space-y-5 border-t border-slate-200 pt-6">
           <div v-for="feature in aboutFeatures" :key="feature.title" class="flex items-start gap-4">
             <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-slate-300 bg-slate-50 text-slate-700">
-              <svg
-                v-if="feature.icon === 'pin'"
-                class="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-              >
-                <path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z" />
-                <circle cx="12" cy="10" r="2.5" />
-              </svg>
-              <svg
-                v-else-if="feature.icon === 'globe'"
-                class="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-              >
-                <circle cx="12" cy="12" r="9" />
-                <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
-              </svg>
-              <svg
-                v-else
-                class="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-              >
-                <rect x="4" y="5" width="16" height="15" rx="2" />
-                <path d="M8 3v4M16 3v4M4 10h16" />
-              </svg>
+              <Icon :name="aboutFeatureIconMap[feature.icon]" class="h-5 w-5" />
             </div>
             <div>
               <h3 class="text-lg font-semibold text-slate-900">{{ feature.title }}</h3>
@@ -448,7 +433,8 @@ const companyStats = [
       </div>
     </section>
 
-    <section class="rounded-[36px] bg-[#eef2f6] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
+    <section class="bg-[#eef2f6] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
+      <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Ключевые преимущества</h2>
         <p class="mt-4 text-base leading-7 text-slate-500">
@@ -459,93 +445,7 @@ const companyStats = [
       <div class="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <article v-for="item in keyAdvantages" :key="item.title" class="rounded-[22px] border border-slate-200 bg-white p-5 shadow-sm">
           <div class="flex h-11 w-11 items-center justify-center rounded-full bg-slate-100 text-slate-700">
-            <svg
-              v-if="item.icon === 'user'"
-              class="h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <circle cx="12" cy="8" r="3.2" />
-              <path d="M6.5 19a5.5 5.5 0 0 1 11 0" />
-            </svg>
-            <svg
-              v-else-if="item.icon === 'users'"
-              class="h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <circle cx="9" cy="9" r="2.5" />
-              <circle cx="16.5" cy="8" r="2" />
-              <path d="M4.5 18a4.5 4.5 0 0 1 9 0M14 17a3.5 3.5 0 0 1 6 0" />
-            </svg>
-            <svg
-              v-else-if="item.icon === 'monitor'"
-              class="h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <rect x="4" y="5" width="16" height="11" rx="2" />
-              <path d="M10 19h4M12 16v3" />
-            </svg>
-            <svg
-              v-else-if="item.icon === 'money'"
-              class="h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <path d="M12 4v16M15.5 7.5a3.5 3.5 0 0 0-7 0c0 5 7 2.5 7 7a3.5 3.5 0 0 1-7 0" />
-            </svg>
-            <svg
-              v-else-if="item.icon === 'document'"
-              class="h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <path d="M8 3h6l4 4v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
-              <path d="M14 3v5h5M9 13l2 2 4-4" />
-            </svg>
-            <svg
-              v-else-if="item.icon === 'lock'"
-              class="h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <rect x="5" y="10" width="14" height="10" rx="2" />
-              <path d="M8 10V7a4 4 0 1 1 8 0v3" />
-            </svg>
-            <svg
-              v-else-if="item.icon === 'shield'"
-              class="h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <path d="M12 3 5.5 6v5.5c0 4.2 2.6 7.2 6.5 9.5 3.9-2.3 6.5-5.3 6.5-9.5V6L12 3Z" />
-              <path d="m9.5 12 1.7 1.7 3.6-3.6" />
-            </svg>
-            <svg
-              v-else
-              class="h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <path d="M13 3 6 14h5l-1 7 8-11h-5l1-7Z" />
-            </svg>
+            <Icon :name="keyAdvantageIconMap[item.icon]" class="h-5 w-5" />
           </div>
           <h3 class="mt-5 text-[22px] font-medium leading-7 text-slate-900">{{ item.title }}</h3>
           <p class="mt-3 text-sm leading-6 text-slate-500">
@@ -553,9 +453,10 @@ const companyStats = [
           </p>
         </article>
       </div>
+      </div>
     </section>
 
-    <section class="grid gap-10 lg:grid-cols-[0.94fr_1.06fr] lg:items-center">
+    <section class="container-default grid gap-10 lg:grid-cols-[0.94fr_1.06fr] lg:items-center">
       <div>
         <div class="max-w-2xl">
           <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Почему выбирают нас</h2>
@@ -568,61 +469,7 @@ const companyStats = [
         <div class="mt-8 space-y-5">
           <div v-for="reason in reasons" :key="reason.title" class="flex items-start gap-4">
             <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-500">
-              <svg
-                v-if="reason.icon === 'pin'"
-                class="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-              >
-                <path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z" />
-                <circle cx="12" cy="10" r="2.5" />
-              </svg>
-              <svg
-                v-else-if="reason.icon === 'phone'"
-                class="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-              >
-                <rect x="7" y="3.5" width="10" height="17" rx="2.5" />
-                <path d="M11 17.5h2" />
-              </svg>
-              <svg
-                v-else-if="reason.icon === 'clock'"
-                class="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-              >
-                <circle cx="12" cy="12" r="8" />
-                <path d="M12 7.5v4.8l3 1.7" />
-              </svg>
-              <svg
-                v-else-if="reason.icon === 'users'"
-                class="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-              >
-                <circle cx="8.5" cy="9" r="2.5" />
-                <circle cx="15.5" cy="9" r="2.5" />
-                <path d="M3.5 18a5 5 0 0 1 10 0M10.5 18a5 5 0 0 1 10 0" />
-              </svg>
-              <svg
-                v-else
-                class="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-              >
-                <path d="M4 20h16M6 20V9l6-4 6 4v11M10 13h4M10 16h4" />
-              </svg>
+              <Icon :name="reasonIconMap[reason.icon]" class="h-5 w-5" />
             </div>
 
             <div>
@@ -635,9 +482,7 @@ const companyStats = [
         <div class="mt-8 rounded-[24px] bg-[#eef1f7] px-6 py-5">
           <div class="flex items-start gap-4">
             <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-emerald-500">
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="m5 12 4 4L19 6" />
-              </svg>
+              <Icon class="h-4 w-4" name="lucide:check" />
             </div>
             <div>
               <h3 class="text-lg font-semibold text-slate-900">{{ reasonGuarantee.title }}</h3>
@@ -680,7 +525,8 @@ const companyStats = [
       </div>
     </section>
 
-    <section class="rounded-[36px] bg-[#eef2f6] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
+    <section class="bg-[#eef2f6] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
+      <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Наши услуги</h2>
         <p class="mt-4 text-base leading-7 text-slate-500">
@@ -701,9 +547,11 @@ const companyStats = [
           :class="service.slug === 'kadastrovaya-stoimost' ? 'lg:col-span-2' : ''"
         />
       </div>
+      </div>
     </section>
 
     <section class="px-2 py-6 sm:px-4">
+      <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Как это работает</h2>
         <p class="mt-4 text-base leading-7 text-slate-500">
@@ -711,71 +559,28 @@ const companyStats = [
         </p>
       </div>
 
-      <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-        <div v-for="(step, index) in processSteps" :key="step.step" class="relative">
+      <div class="mt-12 grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div v-for="(step, index) in processSteps" :key="step.step" class="relative h-full">
           <div
             v-if="index < processSteps.length - 1"
-            class="absolute left-[calc(100%-10px)] top-1/2 z-10 hidden h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full bg-[#37b5bd] text-white xl:flex"
+            class="absolute left-[calc(100%)] top-1/2 z-10 hidden h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full bg-[#37b5bd] text-white xl:flex"
           >
-            <span class="text-xs leading-none">›</span>
+            <Icon class="h-7 w-7" name="lucide:arrow-right" />
           </div>
 
-          <article class="rounded-[24px] border border-slate-200 bg-white px-6 pb-7 pt-5 text-center shadow-sm">
+          <article class="flex h-full flex-col rounded-[24px] border border-slate-200 bg-white px-6 pb-7 pt-5 text-center shadow-sm">
             <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#37b5bd] text-xl font-semibold text-white">
               {{ step.step }}
             </div>
 
             <div class="mx-auto mt-5 flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-slate-700">
-              <svg
-                v-if="step.icon === 'document'"
-                class="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-              >
-                <path d="M8 3h6l4 4v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
-                <path d="M14 3v5h5M9 13h6M9 17h4" />
-              </svg>
-              <svg
-                v-else-if="step.icon === 'pin'"
-                class="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-              >
-                <path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z" />
-                <circle cx="12" cy="10" r="2.5" />
-              </svg>
-              <svg
-                v-else-if="step.icon === 'calculator'"
-                class="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-              >
-                <rect x="6" y="3.5" width="12" height="17" rx="2" />
-                <path d="M9 7.5h6M9 12h1m4 0h1M9 15.5h1m4 0h1" />
-              </svg>
-              <svg
-                v-else
-                class="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-              >
-                <path d="M14 4h6v6M20 4l-8 8" />
-                <path d="M20 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h4" />
-              </svg>
+              <Icon :name="processStepIconMap[step.icon]" class="h-5 w-5" />
             </div>
 
             <h3 class="mt-5 text-[26px] font-semibold leading-tight text-slate-900">
               {{ step.title }}
             </h3>
-            <p class="mx-auto mt-3 max-w-[220px] text-sm leading-6 text-slate-500">
+            <p class="mx-auto mt-3 max-w-[220px] flex-1 text-sm leading-6 text-slate-500">
               {{ step.description }}
             </p>
           </article>
@@ -790,9 +595,11 @@ const companyStats = [
           Подать заявку
         </a>
       </div>
+      </div>
     </section>
 
     <section id="directions" class="px-2 py-6 sm:px-4">
+      <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Наши направления в виде схемы</h2>
         <p class="mt-4 text-base leading-7 text-slate-500">
@@ -862,12 +669,7 @@ const companyStats = [
 
             <div class="mt-5 rounded-[22px] bg-[#eef1f7] px-6 py-8 text-center">
               <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#37b5bd] text-white">
-                <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <path d="M5 16h14l-1.3-4.1A2 2 0 0 0 15.8 10H8.2a2 2 0 0 0-1.9 1.4L5 16Z" />
-                  <path d="M4 16v2a1 1 0 0 0 1 1h1m13-3v2a1 1 0 0 1-1 1h-1M7.5 19v-1m9 1v-1" />
-                  <circle cx="8" cy="16.5" r="1.5" />
-                  <circle cx="16" cy="16.5" r="1.5" />
-                </svg>
+                <Icon class="h-7 w-7" name="lucide:car-front" />
               </div>
               <p class="mx-auto mt-4 max-w-[250px] text-sm leading-6 text-slate-600">
                 {{ directionMovableLabel }}
@@ -884,9 +686,11 @@ const companyStats = [
           </a>
         </div>
       </div>
+      </div>
     </section>
 
-    <section class="rounded-[36px] bg-[#eef2f6] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
+    <section class="bg-[#eef2f6] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
+      <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Наши эксперты и сертификация</h2>
         <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-500">
@@ -901,49 +705,7 @@ const companyStats = [
           class="rounded-[22px] border border-slate-200 bg-white px-5 py-6 text-center shadow-sm"
         >
           <div class="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-emerald-50 text-emerald-500">
-            <svg
-              v-if="item.icon === 'badge'"
-              class="h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <circle cx="12" cy="8" r="3" />
-              <path d="M7 20v-4.5A4.5 4.5 0 0 1 11.5 11h1A4.5 4.5 0 0 1 17 15.5V20l-5-2-5 2Z" />
-            </svg>
-            <svg
-              v-else-if="item.icon === 'cap'"
-              class="h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <path d="m3 9 9-4 9 4-9 4-9-4Z" />
-              <path d="M7 11.5V15c0 1.7 2.2 3 5 3s5-1.3 5-3v-3.5" />
-            </svg>
-            <svg
-              v-else-if="item.icon === 'document'"
-              class="h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <path d="M8 3h6l4 4v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
-              <path d="M14 3v5h5" />
-            </svg>
-            <svg
-              v-else
-              class="h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <path d="m12 3 2.8 5.6 6.2.9-4.5 4.4 1 6.1-5.5-2.9-5.5 2.9 1-6.1L3 9.5l6.2-.9L12 3Z" />
-            </svg>
+            <Icon :name="expertHighlightIconMap[item.icon]" class="h-5 w-5" />
           </div>
           <h3 class="mx-auto mt-5 max-w-[190px] text-lg font-semibold leading-7 text-slate-900">{{ item.title }}</h3>
           <p class="mx-auto mt-3 max-w-[190px] text-sm leading-6 text-slate-500">{{ item.description }}</p>
@@ -977,10 +739,7 @@ const companyStats = [
       <article class="mt-8 rounded-[24px] border border-slate-200 bg-white px-6 py-6 shadow-sm">
         <div class="flex items-start gap-4 border-l-[3px] border-[#37b5bd] pl-4">
           <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-500">
-            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <path d="M8 3h6l4 4v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
-              <path d="M14 3v5h5M9 13l2 2 4-4" />
-            </svg>
+            <Icon class="h-4 w-4" name="lucide:file-check-2" />
           </div>
           <div>
             <h3 class="text-lg font-semibold text-slate-900">{{ expertCertificationNote.title }}</h3>
@@ -988,9 +747,11 @@ const companyStats = [
           </div>
         </div>
       </article>
+      </div>
     </section>
 
     <section class="px-2 py-6 sm:px-4">
+      <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Отзывы клиентов</h2>
         <p class="mt-4 text-base leading-7 text-slate-500">
@@ -1006,14 +767,12 @@ const companyStats = [
         >
           <div class="flex items-start justify-between gap-4">
             <div class="flex items-center gap-1 text-amber-400">
-              <svg
+              <Icon
                 v-for="star in review.rating"
                 :key="star"
                 class="h-4 w-4 fill-current"
-                viewBox="0 0 24 24"
-              >
-                <path d="m12 3 2.8 5.6 6.2.9-4.5 4.4 1 6.1-5.5-2.9-5.5 2.9 1-6.1L3 9.5l6.2-.9L12 3Z" />
-              </svg>
+                name="lucide:star"
+              />
             </div>
             <div class="text-[64px] font-semibold leading-none text-slate-200">”</div>
           </div>
@@ -1039,21 +798,21 @@ const companyStats = [
           class="rounded-[22px] bg-[#eef1f7] px-6 py-6 text-center"
         >
           <div class="flex items-center justify-center gap-2">
-            <svg
+            <Icon
               v-if="stat.icon === 'star'"
               class="h-6 w-6 fill-amber-400 text-amber-400"
-              viewBox="0 0 24 24"
-            >
-              <path d="m12 3 2.8 5.6 6.2.9-4.5 4.4 1 6.1-5.5-2.9-5.5 2.9 1-6.1L3 9.5l6.2-.9L12 3Z" />
-            </svg>
+              name="lucide:star"
+            />
             <p class="text-[44px] font-semibold leading-none text-slate-900">{{ stat.value }}</p>
           </div>
           <p class="mt-3 text-sm text-slate-500">{{ stat.label }}</p>
         </article>
       </div>
+      </div>
     </section>
 
-    <section id="pricing" class="rounded-[36px] bg-[#eef2f6] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
+    <section id="pricing" class="bg-[#eef2f6] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
+      <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Прейскурант</h2>
         <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-500">
@@ -1072,9 +831,7 @@ const companyStats = [
               {{ item.title }}
             </span>
             <span class="shrink-0 text-[#37b5bd] transition group-open:rotate-180">
-              <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="m6 9 6 6 6-6" />
-              </svg>
+              <Icon class="h-7 w-7" name="lucide:chevron-down" />
             </span>
           </summary>
 
@@ -1086,103 +843,9 @@ const companyStats = [
           </div>
         </details>
       </div>
-    </section>
-
-    <section id="contacts" class="rounded-[36px] bg-[#eef2f6] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
-      <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Свяжитесь с нами</h2>
-        <p class="mt-4 text-base leading-7 text-slate-500">
-          Готовы начать оценку недвижимости? Свяжитесь с нами сегодня
-        </p>
-      </div>
-
-      <div class="mt-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-        <div class="space-y-5">
-          <article class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-            <h3 class="text-[28px] font-semibold leading-tight text-slate-900">Контактная информация</h3>
-
-            <div class="mt-6 space-y-6">
-              <div v-for="item in contacts" :key="item.title" class="flex items-start gap-4">
-                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-500">
-                  <svg
-                    v-if="item.icon === 'phone'"
-                    class="h-5 w-5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  >
-                    <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7l.5 3.1a2 2 0 0 1-.6 1.8l-2 2a16 16 0 0 0 6.1 6.1l2-2a2 2 0 0 1 1.8-.6l3.1.5A2 2 0 0 1 22 16.9Z" />
-                  </svg>
-                  <svg
-                    v-else-if="item.icon === 'mail'"
-                    class="h-5 w-5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  >
-                    <rect x="3" y="5" width="18" height="14" rx="2" />
-                    <path d="m4 7 8 6 8-6" />
-                  </svg>
-                  <svg
-                    v-else-if="item.icon === 'pin'"
-                    class="h-5 w-5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  >
-                    <path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z" />
-                    <circle cx="12" cy="10" r="2.5" />
-                  </svg>
-                  <svg
-                    v-else
-                    class="h-5 w-5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  >
-                    <circle cx="12" cy="12" r="8" />
-                    <path d="M12 7.5v4.8l3 1.7" />
-                  </svg>
-                </div>
-
-                <div>
-                  <p class="text-base font-semibold text-slate-900">{{ item.title }}</p>
-                  <a
-                    v-if="item.href"
-                    :href="item.href"
-                    class="mt-1 block text-base leading-7 text-slate-600 hover:text-slate-900"
-                  >
-                    {{ item.value }}
-                  </a>
-                  <p v-else class="mt-1 text-base leading-7 text-slate-600">
-                    {{ item.value }}
-                  </p>
-                  <p class="text-sm leading-6 text-slate-400">{{ item.note }}</p>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="rounded-[24px] bg-[#37b5bd] px-6 py-6 text-white shadow-sm sm:px-8">
-            <h3 class="text-[26px] font-semibold leading-tight">{{ urgentService.title }}</h3>
-            <p class="mt-3 max-w-md text-sm leading-6 text-white/90">{{ urgentService.description }}</p>
-            <a
-              class="mt-5 inline-flex rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-[#37b5bd] transition hover:bg-slate-100"
-              href="#contact-form"
-            >
-              {{ urgentService.action }}
-            </a>
-          </article>
-        </div>
-
-        <div id="contact-form">
-          <ContactSectionForm />
-        </div>
       </div>
     </section>
+
+    <ContactSection />
   </div>
 </template>
