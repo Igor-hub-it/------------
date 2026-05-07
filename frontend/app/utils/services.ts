@@ -5,6 +5,7 @@ export type ServiceItem = {
   description: string
   intro: string
   heroBanner: string
+  cardImage: string
   cardDescription: string
   useCases: string[]
   icon: 'car' | 'home' | 'building' | 'map' | 'bank'
@@ -19,6 +20,7 @@ export const services: ServiceItem[] = [
     title: 'Оценка движимого имущества',
     description: 'Независимая оценка оборудования, техники, транспорта и иных объектов движимого имущества.',
     heroBanner: '/image/banner-dvizh.webp',
+    cardImage: '/image/services-1.webp',
     cardDescription: 'Транспортные средства, оборудование, техника и другие движимые активы',
     useCases: ['Оценка залогового обеспечения кредита', 'Страховые цели', 'Раздел наследства', 'Сделки купли-продажи'],
     icon: 'car',
@@ -38,35 +40,12 @@ export const services: ServiceItem[] = [
     ]
   },
   {
-    slug: 'nezhilaya-nedvizhimost',
-    shortTitle: 'Нежилая недвижимость',
-    title: 'Оценка нежилой недвижимости',
-    description: 'Оценка офисов, складов, производственных, торговых и иных коммерческих помещений.',
-    heroBanner: '/image/banner-nezhilaya.webp',
-    cardDescription: 'Офисные здания, торговые площади, склады и производственные объекты',
-    useCases: ['Инвестиционный анализ', 'Переговоры по аренде', 'Управление активами', 'Финансовая отчётность'],
-    icon: 'building',
-    intro:
-      'Проводим оценку нежилой недвижимости для купли-продажи, залога, аренды, судебных споров и корпоративных процедур.',
-    audience: [
-      'собственников коммерческих объектов',
-      'инвесторов и девелоперов',
-      'банков при кредитовании',
-      'представителей бизнеса и юристов'
-    ],
-    steps: [
-      'собираем документы по объекту и правам',
-      'анализируем локацию, доходность и состояние объекта',
-      'определяем рыночную стоимость подходящими методами',
-      'готовим итоговый отчёт для нужной цели'
-    ]
-  },
-  {
     slug: 'zhilaya-nedvizhimost',
     shortTitle: 'Жилая недвижимость',
     title: 'Оценка жилой недвижимости',
     description: 'Оценка квартир, домов, комнат и другой жилой недвижимости для частных и юридических лиц.',
     heroBanner: '/image/banner-zhilaya.webp',
+    cardImage: '/image/services-2.webp',
     cardDescription: 'Дома, квартиры, кондоминиумы и жилые комплексы',
     useCases: ['Сделки купли-продажи', 'Ипотечные заявки', 'Оценка налога на имущество', 'Оценка наследства'],
     icon: 'home',
@@ -86,12 +65,38 @@ export const services: ServiceItem[] = [
     ]
   },
   {
+    slug: 'nezhilaya-nedvizhimost',
+    shortTitle: 'Коммерческая недвижимость',
+    title: 'Оценка коммерческой недвижимости',
+    description: 'Оценка офисов, складов, промышленных и торговых объектов коммерческой недвижимости.',
+    heroBanner: '/image/banner-nezhilaya.webp',
+    cardImage: '/image/services-3.webp',
+    cardDescription: 'Офисные здания, торговые площади, склады и промышленные объекты',
+    useCases: ['Инвестиционный анализ', 'Переговоры по аренде', 'Управление активами', 'Финансовая отчётность'],
+    icon: 'building',
+    intro:
+      'Проводим оценку коммерческой недвижимости для купли-продажи, залога, аренды, судебных споров и корпоративных процедур.',
+    audience: [
+      'собственников коммерческих объектов',
+      'инвесторов и девелоперов',
+      'банков при кредитовании',
+      'представителей бизнеса и юристов'
+    ],
+    steps: [
+      'собираем документы по объекту и правам',
+      'анализируем локацию, доходность и состояние объекта',
+      'определяем рыночную стоимость подходящими методами',
+      'готовим итоговый отчёт для нужной цели'
+    ]
+  },
+  {
     slug: 'zemelnyj-uchastok',
-    shortTitle: 'Земельный участок',
-    title: 'Оценка земельного участка',
-    description: 'Определение стоимости земельных участков различного назначения с учётом ограничений и потенциала использования.',
+    shortTitle: 'Земля и незавершенные объекты',
+    title: 'Оценка земли и незавершенных объектов',
+    description: 'Оценка земельных участков, наделов, строительных площадок и недостроенных объектов.',
     heroBanner: '/image/banner-zemlya.webp',
-    cardDescription: 'Участки, земельные паи, строительные площадки и недостроенные объекты',
+    cardImage: '/image/services-4.webp',
+    cardDescription: 'Участки, земельные наделы, строительные площадки и недостроенные объекты',
     useCases: ['Проекты развития', 'Приобретение земли', 'Зонирование', 'Сельскохозяйственная земля'],
     icon: 'map',
     intro:
@@ -111,11 +116,12 @@ export const services: ServiceItem[] = [
   },
   {
     slug: 'kadastrovaya-stoimost',
-    shortTitle: 'Кадастровая стоимость',
-    title: 'Оспаривание и оценка кадастровой стоимости',
-    description: 'Подготовка отчёта и сопровождение для снижения кадастровой стоимости объекта.',
+    shortTitle: 'Снижение кадастровой стоимости',
+    title: 'Снижение кадастровой стоимости недвижимости',
+    description: 'Подготовка отчёта и сопровождение для снижения кадастровой стоимости недвижимости.',
     heroBanner: '/image/banner-kadastr.webp',
-    cardDescription: 'Снижение налоговой нагрузки и сопровождение пересмотра кадастровой стоимости недвижимости',
+    cardImage: '/image/services-5.webp',
+    cardDescription: 'Участки, земельные наделы, строительные площадки и недостроенные объекты',
     useCases: ['Подготовка отчёта', 'Сопровождение обращения', 'Снижение налоговой базы', 'Судебное оспаривание'],
     icon: 'bank',
     intro:
@@ -135,11 +141,12 @@ export const services: ServiceItem[] = [
   }
 ]
 
-export const serviceLinks = services.map(({ slug, shortTitle, title, description, cardDescription, useCases, icon }) => ({
+export const serviceLinks = services.map(({ slug, shortTitle, title, description, cardImage, cardDescription, useCases, icon }) => ({
   slug,
   shortTitle,
   title,
   description,
+  cardImage,
   cardDescription,
   useCases,
   icon,

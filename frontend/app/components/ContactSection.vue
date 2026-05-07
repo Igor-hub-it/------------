@@ -6,6 +6,9 @@ const contactIconMap = {
   clock: 'lucide:clock-3'
 } as const
 
+const getContactIcon = (icon: string) =>
+  contactIconMap[icon as keyof typeof contactIconMap]
+
 defineProps<{
   presetPropertyType?: string
 }>()
@@ -64,7 +67,7 @@ const urgentService = {
             <div class="mt-6 space-y-6">
               <div v-for="item in contacts" :key="item.title" class="flex items-start gap-4">
                 <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-500">
-                  <Icon :name="contactIconMap[item.icon]" class="h-5 w-5" />
+                  <Icon :name="getContactIcon(item.icon)" class="h-6 w-6" />
                 </div>
 
                 <div>

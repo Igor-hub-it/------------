@@ -116,7 +116,7 @@ async function submitForm() {
           :disabled="pending"
           type="submit"
         >
-          <Icon class="h-5 w-5" name="lucide:send" />
+          <Icon class="h-6 w-6" name="lucide:send" />
           {{ pending ? 'Отправка...' : 'Отправить сообщение' }}
         </button>
 

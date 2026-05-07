@@ -1,5 +1,36 @@
 <script setup lang="ts">
 import { serviceLinks } from '~/utils/services'
+import iconMain1 from '~/assets/icon/Icon-main-1.svg'
+import iconMain2 from '~/assets/icon/Icon-main-2.svg'
+import iconMain3 from '~/assets/icon/Icon-main-3.svg'
+import iconMain4 from '~/assets/icon/Icon-main-4.svg'
+import about1 from '~/assets/icon/about-1.svg'
+import about2 from '~/assets/icon/about-2.svg'
+import about3 from '~/assets/icon/about-3.svg'
+import advantages1 from '~/assets/icon/advantages-1.svg'
+import advantages2 from '~/assets/icon/advantages-2.svg'
+import advantages3 from '~/assets/icon/advantages-3.svg'
+import advantages4 from '~/assets/icon/advantages-4.svg'
+import advantages5 from '~/assets/icon/advantages-5.svg'
+import advantages6 from '~/assets/icon/advantages-6.svg'
+import advantages7 from '~/assets/icon/advantages-7.svg'
+import advantages8 from '~/assets/icon/advantages-8.svg'
+import select1 from '~/assets/icon/select-1.svg'
+import select2 from '~/assets/icon/select-2.svg'
+import select3 from '~/assets/icon/select-3.svg'
+import select4 from '~/assets/icon/select-4.svg'
+import select5 from '~/assets/icon/select-5.svg'
+import howWork1 from '~/assets/icon/how-work-1.svg'
+import howWork2 from '~/assets/icon/how-work-2.svg'
+import howWork3 from '~/assets/icon/how-work-3.svg'
+import howWork4 from '~/assets/icon/how-work-4.svg'
+import directionsIcon from '~/assets/icon/directions.svg'
+import team1 from '~/assets/icon/team-1.svg'
+import team2 from '~/assets/icon/team-2.svg'
+import team3 from '~/assets/icon/team-3.svg'
+import team4 from '~/assets/icon/team-4.svg'
+import starIcon from '~/assets/icon/star.svg'
+import quoteIcon from '~/assets/icon/quote.svg'
 
 useSeoMeta({
   title: 'Оценка недвижимости и кадастровой стоимости',
@@ -11,88 +42,73 @@ const mainHeroStyle = {
   backgroundImage:
     "linear-gradient(90deg, rgba(15, 23, 42, 0.0) 0%, rgba(15, 23, 42, 0.0) 42%, rgba(15, 23, 42, 0.0) 100%), url('/image/banner-main.webp')",
   backgroundSize: 'cover',
-  backgroundPosition: 'center'
+  backgroundPosition: 'center bottom',
+  backgroundRepeat: 'no-repeat'
 }
 
-const aboutFeatureIconMap = {
-  pin: 'lucide:map-pin',
-  globe: 'lucide:globe',
-  calendar: 'lucide:calendar-days'
-} as const
-
-const keyAdvantageIconMap = {
-  user: 'lucide:user-round',
-  users: 'lucide:users-round',
-  monitor: 'lucide:monitor',
-  money: 'lucide:circle-dollar-sign',
-  document: 'lucide:file-check-2',
-  lock: 'lucide:lock-keyhole',
-  shield: 'lucide:shield-check',
-  flash: 'lucide:zap'
-} as const
-
-const reasonIconMap = {
-  pin: 'lucide:map-pinned',
-  phone: 'lucide:smartphone',
-  clock: 'lucide:clock-3',
-  users: 'lucide:users-round',
-  building: 'lucide:building-2'
-} as const
-
-const processStepIconMap = {
-  document: 'lucide:file-text',
-  pin: 'lucide:map-pin',
-  calculator: 'lucide:calculator',
-  send: 'lucide:send'
-} as const
-
-const expertHighlightIconMap = {
-  badge: 'lucide:badge-check',
-  cap: 'lucide:graduation-cap',
-  document: 'lucide:file-badge',
-  star: 'lucide:star'
-} as const
+const heroAdvantages = [
+  {
+    title: 'Лицензированные специалисты',
+    description: 'Сертифицированные оценщики с большим опытом',
+    icon: iconMain1
+  },
+  {
+    title: 'Юридическая гарантия',
+    description: 'Все отчёты соответствуют требованиям законодательства',
+    icon: iconMain2
+  },
+  {
+    title: 'Быстрое выполнение',
+    description: 'Оперативная обработка без потери качества',
+    icon: iconMain3
+  },
+  {
+    title: 'Гарантия 3 года',
+    description: 'Уверенность, подкрепленная гарантией качества',
+    icon: iconMain4
+  }
+]
 
 const keyAdvantages = [
   {
     title: 'Обширный опыт',
     description: 'Более 15 лет профессионального опыта оценки всех типов недвижимости',
-    icon: 'user'
+    icon: advantages1
   },
   {
     title: 'Профессиональный персонал',
     description: 'Лицензированные и сертифицированные оценщики с высокой квалификацией',
-    icon: 'users'
+    icon: advantages2
   },
   {
     title: 'Онлайн-заказ',
     description: 'Подавайте заявки и отслеживайте прогресс из любого места в любое время',
-    icon: 'monitor'
+    icon: advantages3
   },
   {
     title: 'Доступные цены',
     description: 'Конкурентные тарифы без ущерба качеству и соответствию требованиям',
-    icon: 'money'
+    icon: advantages4
   },
   {
     title: 'Юридическое соответствие',
     description: 'Все отчёты соответствуют национальным стандартам и нормативным требованиям',
-    icon: 'document'
+    icon: advantages5
   },
   {
     title: 'Безопасность данных',
     description: 'Ваша информация защищена шифрованием банковского уровня',
-    icon: 'lock'
+    icon: advantages6
   },
   {
     title: 'Гарантия 3 года',
     description: 'Мы гарантируем наши оценки всеобъемлющей гарантией',
-    icon: 'shield'
+    icon: advantages7
   },
   {
     title: 'Быстрое выполнение',
     description: 'Быстрая обработка для соблюдения ваших сроков',
-    icon: 'flash'
+    icon: advantages8
   }
 ]
 
@@ -100,27 +116,27 @@ const reasons = [
   {
     title: 'По всей стране',
     description: 'Мы работаем во всех регионах с местным рыночным опытом',
-    icon: 'pin'
+    icon: select1
   },
   {
     title: 'Онлайн-услуги',
     description: 'Полный процесс подачи заявки в цифровом формате из любого места',
-    icon: 'phone'
+    icon: select2
   },
   {
     title: 'Гибкие осмотры',
     description: 'Планируйте посещения объекта в удобное для вас время',
-    icon: 'clock'
+    icon: select3
   },
   {
     title: 'Широкая сеть экспертов',
     description: 'Доступ к специализированным оценщикам для любого типа недвижимости',
-    icon: 'users'
+    icon: select4
   },
   {
     title: 'Все типы недвижимости',
     description: 'От жилой до коммерческой и земельных участков',
-    icon: 'building'
+    icon: select5
   }
 ]
 
@@ -134,25 +150,25 @@ const processSteps = [
     step: '01',
     title: 'Заявка',
     description: 'Подайте заявку онлайн или по телефону с базовыми данными о недвижимости',
-    icon: 'document'
+    icon: howWork1
   },
   {
     step: '02',
     title: 'Визит специалиста',
     description: 'Наш оценщик осмотрит объект в удобное для вас время',
-    icon: 'pin'
+    icon: howWork2
   },
   {
     step: '03',
     title: 'Оценка',
     description: 'Экспертный анализ с использованием рыночных данных и профессиональной методологии',
-    icon: 'calculator'
+    icon: howWork3
   },
   {
     step: '04',
     title: 'Доставка отчета',
     description: 'Получите полный отчёт об оценке, соответствующий всем юридическим требованиям',
-    icon: 'send'
+    icon: howWork4
   }
 ]
 
@@ -194,22 +210,22 @@ const expertHighlights = [
   {
     title: 'Национальная сертификация оценщиков',
     description: 'Все оценщики имеют действующие национальные лицензии',
-    icon: 'badge'
+    icon: team1
   },
   {
     title: 'Передовое обучение',
     description: 'Регулярное профессиональное развитие и образование',
-    icon: 'cap'
+    icon: team2
   },
   {
     title: 'Отраслевые аккредитации',
     description: 'Члены профессиональных оценочных ассоциаций',
-    icon: 'document'
+    icon: team3
   },
   {
     title: 'Стандарты качества',
     description: 'Сертифицированные по ISO процессы оценки',
-    icon: 'star'
+    icon: team4
   }
 ]
 
@@ -282,7 +298,7 @@ const reviews = [
 ]
 
 const reviewStats = [
-  { value: '4.9', label: 'Средний рейтинг', icon: 'star' },
+  { value: '4.9', label: 'Средний рейтинг', icon: starIcon },
   { value: '500+', label: 'Отзывов клиентов' },
   { value: '98%', label: 'Рекомендуют нас' }
 ]
@@ -324,17 +340,17 @@ const aboutFeatures = [
   {
     title: 'По всей стране',
     description: 'Работаем во всех регионах',
-    icon: 'pin'
+    icon: about1
   },
   {
     title: 'Онлайн-услуги',
     description: 'Подавайте заявки удалённо',
-    icon: 'globe'
+    icon: about2
   },
   {
     title: 'Гибкий график',
     description: 'Удобное время осмотра',
-    icon: 'calendar'
+    icon: about3
   }
 ]
 
@@ -347,108 +363,130 @@ const companyStats = [
 </script>
 
 <template>
-  <div class="space-y-20 py-10 sm:py-14">
+  <div class="4">
     <section
       id="services"
-      class="overflow-hidden py-16 sm:py-20 lg:flex lg:h-[620px] lg:items-center lg:py-0"
+      class="overflow-hidden py-14 sm:py-16 lg:flex lg:h-[620px] lg:items-center lg:py-0"
       :style="mainHeroStyle"
     >
-      <div class="container-default grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
-        <div>
-          <p class="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-100">Услуги по оценке недвижимости</p>
-          <h1 class="mt-4 max-w-4xl text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Проводим независимую оценку недвижимости для сделок, суда, банков и снижения кадастровой нагрузки
+      <div class="container-default">
+        <div class="max-w-[65%] py-4 lg:py-0">
+          <h1 class="max-w-[520px] text-[48px] font-semibold leading-[1.08] tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+            Услуги по оценке недвижимости
           </h1>
-          <p class="mt-6 max-w-3xl text-base leading-7 text-slate-100 sm:text-lg">
-            Работаем с жилой и коммерческой недвижимостью, земельными участками и задачами по кадастровой стоимости.
-            Подготавливаем отчёты и сопровождаем клиента от первой консультации до готового результата.
+          <p class="mt-8 text-[18px] font-normal leading-7 text-[rgba(31,58,95,0.9)] [font-family:Inter,sans-serif]">
+            Юридическая, кадастровая и рыночная оценка
           </p>
 
-          <div class="mt-8 flex flex-wrap gap-4">
-            <a class="button-primary" href="#contact-form">Подать заявку</a>
-            <NuxtLink class="button-secondary border-white/40 bg-white/10 text-white hover:border-white hover:bg-white/20 hover:text-white" to="/uslugi/kadastrovaya-stoimost">
-              Подробнее об услугах
-            </NuxtLink>
+          <div class="mt-8 grid gap-x-10 gap-y-5 sm:grid-cols-2">
+            <div v-for="item in heroAdvantages" :key="item.title" class="flex items-start gap-3">
+              <div class="flex h-8 w-8 shrink-0 items-center justify-center">
+                <img :src="item.icon" alt="" class="h-6 w-6 object-contain" />
+              </div>
+              <div>
+                <p class="text-[16px] font-medium leading-6 text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">{{ item.title }}</p>
+                <p class="mt-1 text-[14px] font-normal leading-5 text-[rgba(31,58,95,0.7)] [font-family:Inter,sans-serif]">{{ item.description }}</p>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="rounded-[28px] border border-white/20 bg-white/88 p-8 shadow-xl backdrop-blur-sm">
-          <p class="section-label">Что входит в услугу</p>
-          <ul class="mt-6 space-y-4 text-sm leading-6 text-slate-700">
-            <li>Отчёт об оценке под конкретную задачу: сделка, суд, залог, наследство или пересмотр кадастровой стоимости.</li>
-            <li>Понятный план работ с перечнем документов, сроками и ответственным специалистом.</li>
-            <li>Поддержка по вопросам оформления заявки и передачи исходных данных онлайн.</li>
-          </ul>
+          <div class="mt-10 flex flex-wrap gap-4">
+            <a
+              class="inline-flex h-12 items-center justify-center rounded-xl bg-[#37b5bd] px-8 text-[17px] font-semibold text-white transition hover:bg-[#2fa3aa]"
+              href="#contact-form"
+            >
+              Подать заявку
+            </a>
+            <a
+              class="inline-flex h-12 items-center justify-center rounded-xl border border-slate-500/55 bg-white/30 px-8 text-[17px] font-medium text-slate-800 transition hover:bg-white/50"
+              href="#pricing"
+            >
+              Наши услуги
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="about" class="container-default grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-stretch">
-      <article class="section-card p-8 lg:p-10">
-        <h2 class="text-[40px] font-semibold leading-tight tracking-tight text-slate-900 max-sm:text-3xl">
-          О нашей компании
-        </h2>
-        <div class="mt-6 space-y-5 text-[17px] leading-8 text-slate-500">
-          <p>
-            Мы - профессиональное кадастровое агентство по оценке недвижимости с проверенным опытом предоставления
-            точных, юридически обоснованных оценок всех типов недвижимости. Наша команда лицензированных оценщиков
-            сочетает технический опыт с рыночными знаниями для предоставления комплексных услуг оценки.
-          </p>
-          <p>
-            Благодаря общенациональному охвату и возможности обработки заявок онлайн, мы делаем профессиональную
-            оценку недвижимости доступной, эффективной и прозрачной.
-          </p>
-        </div>
+    <section id="about" class="bg-white px-6 py-16 sm:px-10 lg:px-14 lg:py-20">
+      <div class="container-default grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+        <article class="max-w-[470px]">
+          <h2 class="text-[36px] font-semibold leading-tight tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif] max-sm:text-3xl">
+            О нашей компании
+          </h2>
+          <div class="mt-7 space-y-5 text-[16px] font-normal leading-8 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+            <p>
+              Мы - профессиональное кадастровое агентство по оценке недвижимости с проверенным опытом предоставления
+              точных, юридически обоснованных оценок всех типов недвижимости. Наша команда лицензированных оценщиков
+              сочетает технический опыт с рыночными знаниями для предоставления комплексных услуг оценки.
+            </p>
+            <p>
+              Благодаря общенациональному охвату и возможности обработки заявок онлайн, мы делаем профессиональную
+              оценку недвижимости доступной, эффективной и прозрачной.
+            </p>
+          </div>
 
-        <div class="mt-8 space-y-5 border-t border-slate-200 pt-6">
-          <div v-for="feature in aboutFeatures" :key="feature.title" class="flex items-start gap-4">
-            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-slate-300 bg-slate-50 text-slate-700">
-              <Icon :name="aboutFeatureIconMap[feature.icon]" class="h-5 w-5" />
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold text-slate-900">{{ feature.title }}</h3>
-              <p class="mt-1 text-sm text-slate-500">{{ feature.description }}</p>
+          <div class="mt-10 space-y-5">
+            <div v-for="feature in aboutFeatures" :key="feature.title" class="flex items-start gap-4">
+              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[rgba(233,237,242,1)] text-slate-500">
+                <img :src="feature.icon" alt="" class="h-6 w-6 object-contain" />
+              </div>
+              <div>
+                <h3 class="text-[16px] font-medium leading-6 text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">{{ feature.title }}</h3>
+                <p class="mt-1 text-[14px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">{{ feature.description }}</p>
+              </div>
             </div>
           </div>
-        </div>
-      </article>
-
-      <div class="grid gap-4 sm:grid-cols-2">
-        <article
-          v-for="stat in companyStats"
-          :key="stat.label"
-          class="rounded-[28px] border border-slate-200 bg-white p-8 shadow-sm"
-          :class="stat.large ? 'min-h-[210px]' : 'min-h-[130px]'"
-        >
-          <p
-            class="font-semibold tracking-tight text-slate-900 whitespace-pre-line"
-            :class="stat.large ? 'text-[72px] leading-[0.95]' : 'text-[44px] leading-none'"
-          >
-            {{ stat.value }}
-          </p>
-          <p class="mt-5 text-base leading-6 text-slate-500 max-w-[170px]">
-            {{ stat.label }}
-          </p>
         </article>
+
+        <div class="grid gap-x-5 gap-y-7 sm:grid-cols-2">
+          <article
+            v-for="stat in companyStats.slice(0, 2)"
+            :key="stat.label"
+            class="min-h-[215px] rounded-[18px] border border-slate-200 bg-white px-8 py-6 shadow-[0_6px_18px_rgba(15,23,42,0.04)]"
+          >
+            <p class="text-[104px] font-semibold leading-[0.9] tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+              {{ stat.value }}
+            </p>
+            <p class="mt-6 max-w-[160px] text-[16px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+              {{ stat.label }}
+            </p>
+          </article>
+
+          <div
+            v-for="stat in companyStats.slice(2)"
+            :key="stat.label"
+            class="border-t border-slate-200 px-2 pt-7 sm:px-6"
+          >
+            <p class="text-[56px] font-semibold leading-none tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+              {{ stat.value }}
+            </p>
+            <p class="mt-4 max-w-[190px] text-[16px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+              {{ stat.label }}
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="bg-[#eef2f6] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
+    <section class="bg-[rgba(233,237,242,1)] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Ключевые преимущества</h2>
-        <p class="mt-4 text-base leading-7 text-slate-500">
+        <h2 class="text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+          Ключевые преимущества
+        </h2>
+        <p class="mt-4 text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
           Почему клиенты доверяют нам оценку своей недвижимости
         </p>
       </div>
 
-      <div class="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <div class="mt-10 grid gap-4 xl:gap-6 md:grid-cols-2 xl:grid-cols-4">
         <article v-for="item in keyAdvantages" :key="item.title" class="rounded-[22px] border border-slate-200 bg-white p-5 shadow-sm">
-          <div class="flex h-11 w-11 items-center justify-center rounded-full bg-slate-100 text-slate-700">
-            <Icon :name="keyAdvantageIconMap[item.icon]" class="h-5 w-5" />
+          <div class="flex h-11 w-11 items-center justify-center rounded-full bg-[rgba(233,237,242,1)] text-slate-700">
+            <img :src="item.icon" alt="" class="h-6 w-6 object-contain" />
           </div>
-          <h3 class="mt-5 text-[22px] font-medium leading-7 text-slate-900">{{ item.title }}</h3>
-          <p class="mt-3 text-sm leading-6 text-slate-500">
+          <h3 class="mt-5 text-[18px] font-medium leading-7 text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">{{ item.title }}</h3>
+          <p class="mt-3 text-[14px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
             {{ item.description }}
           </p>
         </article>
@@ -456,11 +494,13 @@ const companyStats = [
       </div>
     </section>
 
-    <section class="container-default grid gap-10 lg:grid-cols-[0.94fr_1.06fr] lg:items-center">
+    <section class="container-default grid gap-10 py-8 sm:py-10 lg:grid-cols-[0.94fr_1.06fr] lg:items-center lg:py-14">
       <div>
         <div class="max-w-2xl">
-          <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Почему выбирают нас</h2>
-          <p class="mt-5 text-base leading-7 text-slate-500">
+          <h2 class="text-[36px] font-semibold leading-tight tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif] max-sm:text-3xl">
+            Почему выбирают нас
+          </h2>
+          <p class="mt-5 max-w-[560px] text-[16px] font-normal leading-8 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
             Мы сочетаем технические знания, рыночную экспертизу и современные технологии для предоставления
             превосходных оценочных услуг, отвечающих вашим конкретным потребностям.
           </p>
@@ -468,56 +508,44 @@ const companyStats = [
 
         <div class="mt-8 space-y-5">
           <div v-for="reason in reasons" :key="reason.title" class="flex items-start gap-4">
-            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-500">
-              <Icon :name="reasonIconMap[reason.icon]" class="h-5 w-5" />
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[rgba(47,164,169,0.1)] text-[#5bc7ca]">
+              <img :src="reason.icon" alt="" class="h-6 w-6 object-contain" />
             </div>
 
             <div>
-              <h3 class="text-xl font-semibold text-slate-900">{{ reason.title }}</h3>
-              <p class="mt-1 text-sm leading-6 text-slate-500">{{ reason.description }}</p>
+              <h3 class="text-[18px] font-medium leading-6 text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">{{ reason.title }}</h3>
+              <p class="mt-1 text-[14px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">{{ reason.description }}</p>
             </div>
           </div>
         </div>
 
-        <div class="mt-8 rounded-[24px] bg-[#eef1f7] px-6 py-5">
-          <div class="flex items-start gap-4">
-            <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-emerald-500">
-              <Icon class="h-4 w-4" name="lucide:check" />
+        <div class="mt-10 w-full rounded-[16px] bg-[rgba(233,237,242,1)] px-7 py-6 shadow-[0_8px_20px_rgba(15,23,42,0.03)]">
+          <div class="flex items-start gap-3.5">
+            <div class="flex h-6 w-6 shrink-0 items-center justify-center text-emerald-500">
+              <Icon class="h-6 w-6" name="lucide:check" />
             </div>
             <div>
-              <h3 class="text-lg font-semibold text-slate-900">{{ reasonGuarantee.title }}</h3>
-              <p class="mt-2 text-sm leading-6 text-slate-500">{{ reasonGuarantee.description }}</p>
+              <h3 class="text-[16px] font-medium leading-6 text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">{{ reasonGuarantee.title }}</h3>
+              <p class="mt-2 text-[14px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+                {{ reasonGuarantee.description }}
+              </p>
             </div>
           </div>
         </div>
       </div>
 
       <div class="relative mx-auto w-full max-w-[520px] lg:mx-0">
-        <div class="relative h-[440px] overflow-hidden rounded-[26px] bg-[linear-gradient(180deg,#eef4f7_0%,#d4dde4_52%,#a8b4bc_100%)] shadow-sm">
-          <div class="absolute inset-x-0 bottom-0 h-[42%] bg-[linear-gradient(180deg,rgba(44,83,71,0.14)_0%,rgba(35,62,54,0.72)_100%)]"></div>
-          <div class="absolute bottom-0 left-0 h-[52%] w-[44%] rounded-tr-[120px] bg-[radial-gradient(circle_at_30%_40%,rgba(82,120,98,0.9),rgba(40,71,58,0.96)_65%,rgba(29,53,45,1)_100%)] blur-[1px]"></div>
-          <div class="absolute bottom-0 left-[18%] h-[48%] w-[18%] rounded-t-[80px] bg-[radial-gradient(circle_at_40%_30%,rgba(78,120,98,0.95),rgba(38,71,57,1)_70%)]"></div>
-          <div class="absolute bottom-0 left-[28%] h-[56%] w-[16%] rounded-t-[90px] bg-[radial-gradient(circle_at_40%_30%,rgba(92,132,108,0.95),rgba(42,74,61,1)_70%)]"></div>
-          <div class="absolute -right-[2%] top-0 h-full w-[54%] rounded-l-[28px] bg-[linear-gradient(180deg,#e9ecef_0%,#c9d0d6_100%)] shadow-[-20px_0_40px_rgba(15,23,42,0.12)]"></div>
-          <div class="absolute right-[5%] top-0 h-full w-[8%] bg-[#24434e]"></div>
-          <div class="absolute right-[16%] top-0 h-full w-[2px] bg-slate-600/25"></div>
-          <div class="absolute right-[28%] top-0 h-full w-[2px] bg-slate-600/25"></div>
-          <div class="absolute right-[40%] top-0 h-full w-[2px] bg-slate-600/20"></div>
-          <div class="absolute right-[6%] top-[11%] h-[2px] w-[48%] bg-slate-600/15"></div>
-          <div class="absolute right-[6%] top-[28%] h-[2px] w-[48%] bg-slate-600/15"></div>
-          <div class="absolute right-[6%] top-[45%] h-[2px] w-[48%] bg-slate-600/15"></div>
-          <div class="absolute right-[6%] top-[62%] h-[2px] w-[48%] bg-slate-600/15"></div>
-          <div class="absolute right-[11%] top-[8%] h-[18%] w-[10%] bg-cyan-200/80"></div>
-          <div class="absolute right-[24%] top-[14%] h-[15%] w-[9%] bg-cyan-200/75"></div>
-          <div class="absolute right-[11%] top-[34%] h-[16%] w-[10%] bg-cyan-200/80"></div>
-          <div class="absolute right-[24%] top-[40%] h-[15%] w-[9%] bg-cyan-200/75"></div>
-          <div class="absolute right-[11%] top-[60%] h-[16%] w-[10%] bg-cyan-200/80"></div>
-          <div class="absolute right-[24%] top-[66%] h-[15%] w-[9%] bg-cyan-200/75"></div>
+        <div class="overflow-hidden rounded-[22px] shadow-sm">
+          <img
+            alt="Преимущества компании"
+            class="h-[420px] w-full object-cover"
+            src="/image/advantages.webp"
+          />
         </div>
 
-        <div class="absolute bottom-[-14px] left-[-18px] rounded-[18px] bg-[#2eb5bf] px-7 py-5 text-white shadow-[0_16px_32px_rgba(46,181,191,0.28)]">
-          <p class="text-[58px] font-semibold leading-none">98%</p>
-          <p class="mt-2 text-right text-sm leading-5 text-white/90">
+        <div class="absolute lg:w-[240px] bottom-[-14px] left-[-18px] rounded-[18px] bg-[rgba(47,164,169,1)] px-7 py-5 text-white shadow-[0_4px_6px_-4px_rgba(0,0,0,0.1),0_10px_15px_-3px_rgba(0,0,0,0.1)]">
+          <p class="text-[64px] font-semibold leading-none [font-family:Inter,sans-serif]">98%</p>
+          <p class="mt-2 text-right text-[14px] font-normal leading-5 text-white [font-family:Inter,sans-serif]">
             Удовлетворённость<br />
             клиентов
           </p>
@@ -525,11 +553,13 @@ const companyStats = [
       </div>
     </section>
 
-    <section class="bg-[#eef2f6] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
+    <section class="bg-[rgba(233,237,242,1)] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Наши услуги</h2>
-        <p class="mt-4 text-base leading-7 text-slate-500">
+        <h2 class="text-[36px] font-semibold tracking-tight text-center text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+          Наши услуги
+        </h2>
+        <p class="mt-4 text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
           Комплексные оценочные решения для каждого типа недвижимости
         </p>
       </div>
@@ -538,12 +568,14 @@ const companyStats = [
         <ServiceCard
           v-for="service in serviceLinks"
           :key="service.slug"
+          :card-image="service.cardImage"
           :card-description="service.cardDescription"
           :description="service.description"
           :icon="service.icon"
           :title="service.title"
           :to="service.to"
           :use-cases="service.useCases"
+          :use-cases-in-four-columns-on-lg="service.slug === 'kadastrovaya-stoimost'"
           :class="service.slug === 'kadastrovaya-stoimost' ? 'lg:col-span-2' : ''"
         />
       </div>
@@ -553,8 +585,10 @@ const companyStats = [
     <section class="px-2 py-6 sm:px-4">
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Как это работает</h2>
-        <p class="mt-4 text-base leading-7 text-slate-500">
+        <h2 class="text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+          Как это работает
+        </h2>
+        <p class="mt-4 text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
           Простой и прозрачный процесс от заявки до финального отчета
         </p>
       </div>
@@ -565,7 +599,7 @@ const companyStats = [
             v-if="index < processSteps.length - 1"
             class="absolute left-[calc(100%)] top-1/2 z-10 hidden h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full bg-[#37b5bd] text-white xl:flex"
           >
-            <Icon class="h-7 w-7" name="lucide:arrow-right" />
+            <Icon class="h-6 w-6" name="lucide:arrow-right" />
           </div>
 
           <article class="flex h-full flex-col rounded-[24px] border border-slate-200 bg-white px-6 pb-7 pt-5 text-center shadow-sm">
@@ -574,13 +608,13 @@ const companyStats = [
             </div>
 
             <div class="mx-auto mt-5 flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-slate-700">
-              <Icon :name="processStepIconMap[step.icon]" class="h-5 w-5" />
+              <img :src="step.icon" alt="" class="h-6 w-6 object-contain" />
             </div>
 
-            <h3 class="mt-5 text-[26px] font-semibold leading-tight text-slate-900">
+            <h3 class="mt-5 text-[18px] font-medium leading-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
               {{ step.title }}
             </h3>
-            <p class="mx-auto mt-3 max-w-[220px] flex-1 text-sm leading-6 text-slate-500">
+            <p class="mx-auto mt-3 max-w-[220px] flex-1 text-[14px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
               {{ step.description }}
             </p>
           </article>
@@ -588,7 +622,7 @@ const companyStats = [
       </div>
 
       <div class="mt-12 text-center">
-        <p class="text-base leading-7 text-slate-500">
+        <p class="text-[16px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
           Готовы начать? Весь процесс обычно занимает 5-7 рабочих дней.
         </p>
         <a class="mt-5 inline-flex rounded-2xl bg-[#37b5bd] px-8 py-3 text-base font-semibold text-white transition hover:bg-[#2fa3aa]" href="#contact-form">
@@ -601,37 +635,46 @@ const companyStats = [
     <section id="directions" class="px-2 py-6 sm:px-4">
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Наши направления в виде схемы</h2>
-        <p class="mt-4 text-base leading-7 text-slate-500">
+        <h2 class="text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+          Наши направления в виде схемы
+        </h2>
+        <p class="mt-4 text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
           Полный перечень всех работ по оценке
         </p>
       </div>
 
       <div class="mt-10 grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-        <article class="rounded-[26px] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-          <h3 class="text-[28px] font-semibold leading-tight text-slate-900">Недвижимое имущество</h3>
+        <article class="rounded-[26px] border border-l-4 border-slate-200 border-l-[rgba(44,111,140,1)] bg-white p-5 shadow-sm sm:p-6">
+          <h3 class="text-[20px] font-medium leading-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">Недвижимое имущество</h3>
 
           <div class="mt-5 space-y-5">
             <section
               v-for="group in directionPropertyGroups"
               :key="group.title"
-              class="rounded-[22px] border border-slate-200 bg-[#eef1f7] p-4 shadow-sm"
+              class="rounded-[22px] border border-l-4 border-slate-200 border-l-[rgba(47,164,169,1)] bg-[#eef1f7] p-4 shadow-sm"
             >
-              <div class="border-l-[3px] border-[#37b5bd] pl-3">
-                <h4 class="text-lg font-semibold text-slate-900">{{ group.title }}</h4>
+              <div>
+                <h4 class="text-[18px] font-medium leading-6 text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">{{ group.title }}</h4>
 
                 <div class="mt-4 space-y-3">
                   <div
-                    v-for="item in group.items"
+                    v-for="(item, itemIndex) in group.items"
                     :key="item"
-                    class="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm leading-6 text-slate-600 shadow-[0_1px_3px_rgba(15,23,42,0.05)]"
+                    class="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-[14px] font-normal leading-6 text-[rgba(31,58,95,1)] shadow-[0_1px_3px_rgba(15,23,42,0.05)] [font-family:Inter,sans-serif]"
                   >
                     <div class="flex items-center justify-between gap-3">
                       <span>{{ item }}</span>
                       <span
                         v-if="group.title === 'Земельные участки'"
                         class="h-2.5 w-2.5 shrink-0 rounded-full"
-                        :class="item === 'От 100 до 1000 га' || item === 'Более 1000 га' ? 'bg-slate-900' : 'bg-[#37b5bd]'"
+                        :style="{
+                          backgroundColor:
+                            itemIndex < 3
+                              ? 'rgba(47, 164, 169, 1)'
+                              : itemIndex === 3
+                                ? 'rgba(44, 111, 140, 1)'
+                                : 'rgba(31, 58, 95, 1)'
+                        }"
                       ></span>
                     </div>
                   </div>
@@ -642,20 +685,20 @@ const companyStats = [
         </article>
 
         <div class="space-y-5">
-          <article class="rounded-[26px] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-            <h3 class="text-[26px] font-semibold leading-tight text-slate-900">
+          <article class="rounded-[26px] border border-l-4 border-slate-200 border-l-[rgba(44,111,140,1)] bg-white p-5 shadow-sm sm:p-6">
+            <h3 class="text-[20px] font-medium leading-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
               Снижение кадастр. стоимости недвижимости
             </h3>
 
-            <div class="mt-5 rounded-[22px] border border-slate-200 bg-[#eef1f7] p-4 shadow-sm">
-              <div class="border-l-[3px] border-[#37b5bd] pl-3">
-                <h4 class="text-lg font-semibold text-slate-900">Типы объектов</h4>
+            <div class="mt-5 rounded-[22px] border border-l-4 border-slate-200 border-l-[rgba(47,164,169,1)] bg-[#eef1f7] p-4 shadow-sm">
+              <div>
+                <h4 class="text-[18px] font-medium leading-6 text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">Типы объектов</h4>
 
                 <div class="mt-4 space-y-3">
                   <div
                     v-for="item in directionCadastreItems"
                     :key="item"
-                    class="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm leading-6 text-slate-600 shadow-[0_1px_3px_rgba(15,23,42,0.05)]"
+                    class="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-[14px] font-normal leading-6 text-[rgba(31,58,95,1)] shadow-[0_1px_3px_rgba(15,23,42,0.05)] [font-family:Inter,sans-serif]"
                   >
                     {{ item }}
                   </div>
@@ -664,14 +707,14 @@ const companyStats = [
             </div>
           </article>
 
-          <article class="rounded-[26px] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-            <h3 class="text-[26px] font-semibold leading-tight text-slate-900">Движимое имущество</h3>
+          <article class="rounded-[26px] border border-l-4 border-slate-200 border-l-[rgba(44,111,140,1)] bg-white p-5 shadow-sm sm:p-6">
+            <h3 class="text-[20px] font-medium leading-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">Движимое имущество</h3>
 
             <div class="mt-5 rounded-[22px] bg-[#eef1f7] px-6 py-8 text-center">
               <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#37b5bd] text-white">
-                <Icon class="h-7 w-7" name="lucide:car-front" />
+                <img :src="directionsIcon" alt="" class="h-6 w-6 object-contain" />
               </div>
-              <p class="mx-auto mt-4 max-w-[250px] text-sm leading-6 text-slate-600">
+              <p class="mx-auto mt-4 max-w-[250px] text-[14px] font-normal leading-6 text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
                 {{ directionMovableLabel }}
               </p>
             </div>
@@ -689,11 +732,13 @@ const companyStats = [
       </div>
     </section>
 
-    <section class="bg-[#eef2f6] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
+    <section class="bg-[rgba(233,237,242,1)] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Наши эксперты и сертификация</h2>
-        <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-500">
+        <h2 class="text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+          Наши эксперты и сертификация
+        </h2>
+        <p class="mx-auto mt-4 max-w-2xl text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
           Лицензированные профессионалы с подтвержденным опытом и признанием в отрасли
         </p>
       </div>
@@ -705,15 +750,15 @@ const companyStats = [
           class="rounded-[22px] border border-slate-200 bg-white px-5 py-6 text-center shadow-sm"
         >
           <div class="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-emerald-50 text-emerald-500">
-            <Icon :name="expertHighlightIconMap[item.icon]" class="h-5 w-5" />
+            <img :src="item.icon" alt="" class="h-6 w-6 object-contain" />
           </div>
-          <h3 class="mx-auto mt-5 max-w-[190px] text-lg font-semibold leading-7 text-slate-900">{{ item.title }}</h3>
-          <p class="mx-auto mt-3 max-w-[190px] text-sm leading-6 text-slate-500">{{ item.description }}</p>
+          <h3 class="mx-auto mt-5 max-w-[190px] text-[16px] font-medium leading-7 text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">{{ item.title }}</h3>
+          <p class="mx-auto mt-3 max-w-[190px] text-[14px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">{{ item.description }}</p>
         </article>
       </div>
 
       <div class="mt-12 text-center">
-        <h3 class="text-3xl font-semibold tracking-tight text-slate-900">Познакомьтесь с нашей командой</h3>
+        <h3 class="text-[28px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">Познакомьтесь с нашей командой</h3>
       </div>
 
       <div class="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-2">
@@ -727,7 +772,7 @@ const companyStats = [
               {{ member.initials }}
             </div>
             <div>
-              <h4 class="text-xl font-semibold text-slate-900">{{ member.name }}</h4>
+              <h4 class="text-[18px] font-medium text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">{{ member.name }}</h4>
               <p class="mt-1 text-sm font-medium text-[#37b5bd]">{{ member.role }}</p>
               <p class="mt-2 text-sm leading-6 text-slate-500">{{ member.experience }}</p>
               <p class="mt-1 text-sm leading-6 text-slate-500">{{ member.specialty }}</p>
@@ -736,14 +781,14 @@ const companyStats = [
         </article>
       </div>
 
-      <article class="mt-8 rounded-[24px] border border-slate-200 bg-white px-6 py-6 shadow-sm">
-        <div class="flex items-start gap-4 border-l-[3px] border-[#37b5bd] pl-4">
-          <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-500">
-            <Icon class="h-4 w-4" name="lucide:file-check-2" />
+      <article class="mt-8 rounded-[24px] border border-l-4 border-slate-200 border-l-[rgba(47,164,169,1)] bg-white px-6 py-6 shadow-sm">
+        <div class="flex items-start gap-4">
+          <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-emerald-500">
+            <img :src="team3" alt="" class="h-6 w-6 object-contain" />
           </div>
           <div>
-            <h3 class="text-lg font-semibold text-slate-900">{{ expertCertificationNote.title }}</h3>
-            <p class="mt-2 text-sm leading-6 text-slate-500">{{ expertCertificationNote.description }}</p>
+            <h3 class="text-[18px] font-medium text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">{{ expertCertificationNote.title }}</h3>
+            <p class="mt-2 text-[14px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">{{ expertCertificationNote.description }}</p>
           </div>
         </div>
       </article>
@@ -753,40 +798,43 @@ const companyStats = [
     <section class="px-2 py-6 sm:px-4">
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Отзывы клиентов</h2>
-        <p class="mt-4 text-base leading-7 text-slate-500">
+        <h2 class="text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+          Отзывы клиентов
+        </h2>
+        <p class="mt-4 text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
           Что наши клиенты говорят о наших услугах
         </p>
       </div>
-
+      <!-- <div class="w-full h-px bg-[]"> -->
       <div class="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-2">
         <article
           v-for="review in reviews"
           :key="review.author"
-          class="rounded-[24px] border border-slate-200 bg-white px-6 py-6 shadow-sm"
+          class="relative flex h-full flex-col rounded-[24px] border border-slate-200 bg-white px-6 py-6 shadow-sm"
         >
+          <img :src="quoteIcon" alt="" class="absolute right-6 top-6 h-16 w-16 object-contain" />
           <div class="flex items-start justify-between gap-4">
             <div class="flex items-center gap-1 text-amber-400">
-              <Icon
+              <img
                 v-for="star in review.rating"
                 :key="star"
-                class="h-4 w-4 fill-current"
-                name="lucide:star"
+                :src="starIcon"
+                alt=""
+                class="h-5 w-5 object-contain"
               />
             </div>
-            <div class="text-[64px] font-semibold leading-none text-slate-200">”</div>
           </div>
 
-          <p class="mt-2 text-base leading-7 text-slate-600">
+          <p class="mt-2 w-[90%] text-[16px] font-normal pb-4 leading-7 text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif] md:w-[93%]">
             {{ review.text }}
           </p>
 
-          <div class="mt-8 flex items-end justify-between gap-4">
+          <div class="mt-auto flex items-end justify-between gap-4 pt-4 border-t border-slate-200">
             <div>
-              <p class="text-base font-semibold text-slate-900">{{ review.author }}</p>
-              <p class="mt-1 text-sm text-slate-500">{{ review.role }}</p>
+              <p class="text-[16px] font-medium text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">{{ review.author }}</p>
+              <p class="mt-1 text-[14px] font-normal text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">{{ review.role }}</p>
             </div>
-            <p class="text-sm text-slate-400">{{ review.date }}</p>
+            <p class="text-[14px] font-normal text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">{{ review.date }}</p>
           </div>
         </article>
       </div>
@@ -795,17 +843,18 @@ const companyStats = [
         <article
           v-for="stat in reviewStats"
           :key="stat.label"
-          class="rounded-[22px] bg-[#eef1f7] px-6 py-6 text-center"
+          class="rounded-[22px] bg-[rgba(233,237,242,1)] px-6 py-6 text-center"
         >
           <div class="flex items-center justify-center gap-2">
-            <Icon
-              v-if="stat.icon === 'star'"
-              class="h-6 w-6 fill-amber-400 text-amber-400"
-              name="lucide:star"
+            <img
+              v-if="stat.icon"
+              :src="stat.icon"
+              alt=""
+              class="h-8 w-8 object-contain"
             />
-            <p class="text-[44px] font-semibold leading-none text-slate-900">{{ stat.value }}</p>
+            <p class="text-[36px] font-semibold leading-none text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">{{ stat.value }}</p>
           </div>
-          <p class="mt-3 text-sm text-slate-500">{{ stat.label }}</p>
+          <p class="mt-3 text-[14px] font-normal text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">{{ stat.label }}</p>
         </article>
       </div>
       </div>
@@ -831,7 +880,7 @@ const companyStats = [
               {{ item.title }}
             </span>
             <span class="shrink-0 text-[#37b5bd] transition group-open:rotate-180">
-              <Icon class="h-7 w-7" name="lucide:chevron-down" />
+              <Icon class="h-6 w-6" name="lucide:chevron-down" />
             </span>
           </summary>
 
