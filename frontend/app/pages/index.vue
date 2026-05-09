@@ -31,6 +31,12 @@ import team3 from '~/assets/icon/team-3.svg'
 import team4 from '~/assets/icon/team-4.svg'
 import starIcon from '~/assets/icon/star.svg'
 import quoteIcon from '~/assets/icon/quote.svg'
+import buildIcon from '~/assets/icon/builld.svg'
+import factoryIcon from '~/assets/icon/factory.svg'
+import clockIcon from '~/assets/icon/clock.svg'
+import landIcon from '~/assets/icon/land.svg'
+import dollarIcon from '~/assets/icon/dollar.svg'
+import carIcon from '~/assets/icon/car.svg'
 
 useSeoMeta({
   title: 'Оценка недвижимости и кадастровой стоимости',
@@ -303,38 +309,126 @@ const reviewStats = [
   { value: '98%', label: 'Рекомендуют нас' }
 ]
 
+type PriceEntry = {
+  name: string
+  note: string
+  price: string
+}
+
+type PriceItem = {
+  title: string
+  price: string
+  description: string
+  icon?: string
+  groupLabel?: string
+  entries?: PriceEntry[]
+}
+
 const priceList = [
   {
     title: 'Оценка жилой недвижимости',
     price: 'от 5 000 руб.',
-    description: 'Квартиры, дома, комнаты, таунхаусы и иные жилые объекты.'
+    description: 'Квартиры, дома, коттеджи, таунхаусы, дачи и иные жилые объекты.',
+    icon: buildIcon,
+    groupLabel: 'Жилая недвижимость',
+    entries: [
+      { name: 'Квартира / комната / гостинка / кухня-прихожая', note: 'рыночная стоимость', price: '5 000 ₽' },
+      { name: 'Дом / коттедж / таунхаус / дача с земельным участком', note: 'рыночная стоимость', price: '10 000 ₽' },
+      { name: 'Незавершенный строительством дом / коттедж / таунхаус / дача с земельным участком', note: 'рыночная стоимость', price: '12 000 ₽' }
+    ]
   },
   {
-    title: 'Оценка нежилой недвижимости',
-    price: 'от 12 000 руб.',
-    description: 'Офисы, склады, торговые площади, производственные и иные коммерческие объекты.'
+    title: 'Оценка нежилых помещений',
+    price: 'от 9 000 руб.',
+    description: 'Офисы, склады, торговые площади и иные коммерческие помещения различной площади.',
+    icon: factoryIcon,
+    groupLabel: 'Нежилые помещения',
+    entries: [
+      { name: 'Нежилое помещение площадью до 50 м²', note: 'рыночная стоимость', price: '9 000 ₽' },
+      { name: 'Нежилое помещение площадью от 50 до 100 м²', note: 'рыночная стоимость', price: '14 000 ₽' },
+      { name: 'Нежилое помещение площадью от 100 до 300 м²', note: 'рыночная стоимость', price: '18 000 ₽' },
+      { name: 'Нежилое помещение площадью от 300 до 500 м²', note: 'рыночная стоимость', price: '25 000 ₽' },
+      { name: 'Нежилое помещение площадью от 500 до 1000 м²', note: 'рыночная стоимость', price: '30 000 ₽' },
+      { name: 'Нежилое помещение площадью более 1000 м²', note: 'рыночная стоимость', price: '45 000 ₽' }
+    ]
   },
   {
-    title: 'Оценка незавершенных зданий',
-    price: 'от 15 000 руб.',
-    description: 'Объекты незавершённого строительства для сделок, суда и инвестиционного анализа.'
+    title: 'Оценка нежилых зданий',
+    price: 'от 18 000 руб.',
+    description: 'Нежилые здания различной площади с земельными участками.',
+    icon: factoryIcon,
+    groupLabel: 'Нежилые здания с земельным участком',
+    entries: [
+      { name: 'Нежилое здание площадью менее 100 м² с земельным участком', note: 'рыночная стоимость', price: '18 000 ₽' },
+      { name: 'Нежилое здание площадью от 100 до 500 м² с земельным участком', note: 'рыночная стоимость', price: '25 000 ₽' },
+      { name: 'Нежилое здание площадью от 500 до 1000 м² с земельным участком', note: 'рыночная стоимость', price: '32 000 ₽' },
+      { name: 'Нежилое здание площадью от 1000 до 3000 м² с земельным участком', note: 'рыночная стоимость', price: '45 000 ₽' },
+      { name: 'Нежилое здание площадью от 3000 до 5000 м² с земельным участком', note: 'рыночная стоимость', price: '72 000 ₽' },
+      { name: 'Нежилое здание площадью более 5000 м² с земельным участком', note: 'рыночная стоимость', price: '90 000 ₽' }
+    ]
+  },
+  {
+    title: 'Оценка гаражей и парковок',
+    price: 'от 7 000 руб.',
+    description: 'Гаражи, парковочные места и незавершённые гаражи.',
+    icon: carIcon,
+    groupLabel: 'Гаражи и парковки',
+    entries: [
+      { name: 'Гараж / парковочное место', note: 'рыночная стоимость', price: '7 000 ₽' },
+      { name: 'Незавершенный строительством гараж', note: 'рыночная стоимость', price: '9 000 ₽' }
+    ]
+  },
+  {
+    title: 'Оценка незавершённого строительства',
+    price: 'от 21 000 руб.',
+    description: 'Незавершённые нежилые здания различной площади с земельными участками.',
+    icon: clockIcon,
+    groupLabel: 'Незавершённые нежилые здания',
+    entries: [
+      { name: 'Незавершенное строительством нежилое здание площадью менее 100 м² с земельным участком', note: 'рыночная стоимость', price: '21 000 ₽' },
+      { name: 'Незавершенное строительством нежилое здание площадью от 100 до 500 м² с земельным участком', note: 'рыночная стоимость', price: '27 000 ₽' },
+      { name: 'Незавершенное строительством нежилое здание площадью от 500 до 1000 м² с земельным участком', note: 'рыночная стоимость', price: '43 000 ₽' },
+      { name: 'Незавершенное строительством нежилое здание площадью от 1000 до 3000 м² с земельным участком', note: 'рыночная стоимость', price: '77 000 ₽' },
+      { name: 'Незавершенное строительством нежилое здание площадью от 3000 до 5000 м² с земельным участком', note: 'рыночная стоимость', price: '82 000 ₽' },
+      { name: 'Незавершенное строительством нежилое здание площадью более 5000 м² с земельным участком', note: 'рыночная стоимость', price: '95 000 ₽' }
+    ]
   },
   {
     title: 'Оценка земельных участков',
-    price: 'от 8 000 руб.',
-    description: 'Участки под ИЖС, сельхозназначение, коммерческое и иное использование.'
-  },
-  {
-    title: 'Оценка движимого имущества',
-    price: 'от 6 000 руб.',
-    description: 'Транспорт, оборудование, техника и другие движимые активы.'
+    price: 'от 7 000 руб.',
+    description: 'Земельные участки различной площади под любое использование.',
+    icon: landIcon,
+    groupLabel: 'Земельные участки',
+    entries: [
+      { name: 'Земельный участок площадью до 10 соток', note: 'рыночная стоимость', price: '7 000 ₽' },
+      { name: 'Земельный участок площадью от 10 соток до 50 соток', note: 'рыночная стоимость', price: '12 000 ₽' },
+      { name: 'Земельный участок площадью от 50 соток до 1 Га', note: 'рыночная стоимость', price: '18 000 ₽' },
+      { name: 'Земельный участок площадью от 1 до 100 Га', note: 'рыночная стоимость', price: '23 000 ₽' },
+      { name: 'Земельный участок площадью от 100 до 1000 Га', note: 'рыночная стоимость', price: '32 000 ₽' },
+      { name: 'Земельный участок площадью от 1000 Га', note: 'рыночная стоимость', price: '45 000 ₽' }
+    ]
   },
   {
     title: 'Снижение кадастровой стоимости',
-    price: 'по запросу',
-    description: 'Предварительный анализ, отчёт и сопровождение для снижения налоговой нагрузки.'
+    price: 'от 18 000 руб.',
+    description: 'Оценка для целей оспаривания и снижения кадастровой стоимости объектов.',
+    icon: dollarIcon,
+    groupLabel: 'Оценка для снижения кадастровой стоимости',
+    entries: [
+      { name: 'Квартира / комната / гостинка / кухня-прихожая', note: 'для снижения кадастровой стоимости', price: '18 000 ₽' },
+      { name: 'Жилое здание', note: 'для снижения кадастровой стоимости', price: '23 000 ₽' },
+      { name: 'Нежилое помещение', note: 'для снижения кадастровой стоимости', price: '25 000 ₽' },
+      { name: 'Земельный участок любой категории и назначения', note: 'для снижения кадастровой стоимости', price: '30 000 ₽' },
+      { name: 'Нежилое здание', note: 'для снижения кадастровой стоимости', price: '32 000 ₽' }
+    ]
   }
-]
+] as PriceItem[]
+
+const pricingOpenStates = ref(priceList.map((_, index) => index === 1))
+
+const togglePricingAccordion = (index: number) => {
+  pricingOpenStates.value[index] = !pricingOpenStates.value[index]
+}
 
 const aboutFeatures = [
   {
@@ -860,37 +954,93 @@ const companyStats = [
       </div>
     </section>
 
-    <section id="pricing" class="bg-[#eef2f6] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
+    <section id="pricing" class="bg-[rgba(233,237,242,1)] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">Прейскурант</h2>
-        <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-500">
+        <h2 class="text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+          Прейскурант
+        </h2>
+        <p class="mx-auto mt-4 max-w-2xl text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
           Лицензированные профессионалы с подтвержденным опытом и признанием в отрасли
         </p>
       </div>
 
-      <div class="mx-auto mt-10 max-w-5xl space-y-5">
-        <details
-          v-for="item in priceList"
+      <div class="mx-auto mt-10 space-y-5">
+        <div
+          v-for="(item, index) in priceList"
           :key="item.title"
-          class="group overflow-hidden rounded-[22px] border border-slate-200 bg-white shadow-sm"
+          class="group relative overflow-hidden rounded-[14px] transition-all duration-200"
+          :class="
+            pricingOpenStates[index]
+              ? 'p-[4px]'
+              : 'border border-slate-200 border-l-[4px] border-l-[rgba(47,164,169,1)] bg-white hover:border-l-[8px]'
+          "
+          :style="
+            pricingOpenStates[index]
+              ? { background: 'linear-gradient(180deg, rgba(47,164,169,1) 10%, rgba(233,237,242,1) 19%)' }
+              : undefined
+          "
         >
-          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-6 text-left marker:content-none">
-            <span class="border-l-[3px] border-[#37b5bd] pl-5 text-[28px] font-semibold leading-tight text-slate-900 max-sm:text-xl">
-              {{ item.title }}
-            </span>
-            <span class="shrink-0 text-[#37b5bd] transition group-open:rotate-180">
-              <Icon class="h-6 w-6" name="lucide:chevron-down" />
-            </span>
-          </summary>
+          <div class="overflow-hidden bg-white shadow-sm" :class="pricingOpenStates[index] ? 'rounded-[13px]' : 'rounded-[14px]'">
+            <button
+              type="button"
+              class="flex w-full cursor-pointer items-center justify-between gap-4 py-6 px-6 text-left group-hover:pl-[20px]"
+              @click="togglePricingAccordion(index)"
+            >
+              <span class="text-[24px] font-medium leading-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif] max-sm:text-xl">
+                {{ item.title }}
+              </span>
+              <span class="shrink-0 text-[#37b5bd] transition" :class="pricingOpenStates[index] ? 'rotate-180' : ''">
+                <Icon class="h-6 w-6" name="lucide:chevron-down" />
+              </span>
+            </button>
 
-          <div class="border-t border-slate-200 px-6 pb-6 pt-4">
-            <div class="pl-5">
-              <p class="text-2xl font-semibold text-slate-900">{{ item.price }}</p>
-              <p class="mt-3 text-base leading-7 text-slate-500">{{ item.description }}</p>
+            <div v-if="pricingOpenStates[index]" class=" bg-[rgba(233,237,242,1)]">
+              <div class="h-[40px] w-full bg-[linear-gradient(180deg,#FFFFFF_21.94%,rgba(255,255,255,0)_100%)]"></div>
+
+              <div class="px-4 pb-5 sm:px-5">
+                <p v-if="item.groupLabel" class="px-1 text-[22px] font-medium leading-7 text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+                  {{ item.groupLabel }}
+                </p>
+                <p class="mt-2 px-1 text-[14px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+                  {{ item.description }}
+                </p>
+
+                <div class="mt-4 space-y-2.5">
+                  <div
+                    v-for="entry in item.entries || []"
+                    :key="`${item.title}-${entry.name}`"
+                    class="flex flex-wrap items-center justify-between gap-4 rounded-[12px] border-l-4 border-l-[#2fa4a9] bg-white px-5 py-4"
+                  >
+                    <div class="flex min-w-[220px] flex-1 items-start gap-3">
+                      <div v-if="item.icon" class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
+                        <img :src="item.icon" alt="" class="h-6 w-6 object-contain" />
+                      </div>
+                      <div class="min-w-0 flex-1">
+                        <p class="text-[16px] font-medium leading-6 text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+                          {{ entry.name }}
+                        </p>
+                        <p class="mt-1 text-[13px] font-normal leading-5 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+                          {{ entry.note }}
+                        </p>
+                      </div>
+                    </div>
+                    <p class="min-w-[90px] text-[32px] font-medium leading-none text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+                      {{ entry.price }}
+                    </p>
+                    <a
+                      class="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[#2fa4a9] px-6 text-[16px] font-medium text-white transition hover:bg-[#289299]"
+                      href="#contact-form"
+                    >
+                      Подать заявку
+                      <Icon class="h-5 w-5" name="lucide:arrow-right" />
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </details>
+        </div>
       </div>
       </div>
     </section>
