@@ -24,6 +24,7 @@ import howWork1 from '~/assets/icon/how-work-1.svg'
 import howWork2 from '~/assets/icon/how-work-2.svg'
 import howWork3 from '~/assets/icon/how-work-3.svg'
 import howWork4 from '~/assets/icon/how-work-4.svg'
+import arrowRightIcon from '~/assets/icon/arrow-right.svg'
 import directionsIcon from '~/assets/icon/directions.svg'
 import team1 from '~/assets/icon/team-1.svg'
 import team2 from '~/assets/icon/team-2.svg'
@@ -175,6 +176,29 @@ const processSteps = [
     title: 'Доставка отчета',
     description: 'Получите полный отчёт об оценке, соответствующий всем юридическим требованиям',
     icon: howWork4
+  }
+]
+
+const processStepsMobile = [
+  {
+    step: '1',
+    title: 'Заявка',
+    description: 'Оставьте заявку на сайте или позвоните нам'
+  },
+  {
+    step: '2',
+    title: 'Консультация',
+    description: 'Специалист свяжется с вами для уточнения деталей'
+  },
+  {
+    step: '3',
+    title: 'Осмотр',
+    description: 'Выездной осмотр объекта в удобное для вас время'
+  },
+  {
+    step: '4',
+    title: 'Отчет',
+    description: 'Получение готового отчета об оценке в течение 3-5 дней'
   }
 ]
 
@@ -450,7 +474,7 @@ const aboutFeatures = [
 
 const companyStats = [
   { value: '15+', label: 'Лет опыта', large: true },
-  { value: '10+\n000', label: 'Оценено объектов', large: true },
+  { value: '10+\n000', mobileValue: '10 000+', label: 'Оценено объектов', large: true },
   { value: '50+', label: 'Экспертов-оценщиков' },
   { value: '100%', label: 'Юридическое соответствие' }
 ]
@@ -460,20 +484,20 @@ const companyStats = [
   <div class="4">
     <section
       id="services"
-      class="overflow-hidden py-14 sm:py-16 lg:flex lg:h-[620px] lg:items-center lg:py-0"
+      class="overflow-hidden py-4 sm:py-16 lg:flex lg:h-[620px] lg:items-center lg:py-0"
       :style="mainHeroStyle"
     >
       <div class="container-default">
-        <div class="max-w-[65%] py-4 lg:py-0">
-          <h1 class="max-w-[520px] text-[48px] font-semibold leading-[1.08] tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+        <div class="w-full sm:max-w-[65%] py-0">
+          <h1 class="max-w-[520px] text-[36px] sm:text-[48px] font-semibold leading-[1.08] tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
             Услуги по оценке недвижимости
           </h1>
-          <p class="mt-8 text-[18px] font-normal leading-7 text-[rgba(31,58,95,0.9)] [font-family:Inter,sans-serif]">
+          <p class="mt-2 sm:mt-8 text-[18px] font-normal leading-7 text-[rgba(31,58,95,0.9)] [font-family:Inter,sans-serif]">
             Юридическая, кадастровая и рыночная оценка
           </p>
 
-          <div class="mt-8 grid gap-x-10 gap-y-5 sm:grid-cols-2">
-            <div v-for="item in heroAdvantages" :key="item.title" class="flex items-start gap-3">
+          <div class="mt-4 sm:mt-8 grid gap-x-10 gap-y-5 sm:grid-cols-2 backdrop-blur-[6px] sm:backdrop-blur-none">
+            <div v-for="item in heroAdvantages" :key="item.title" class="flex items-start gap-2 sm:gap-3 rounded-xl sm:bg-white/30 sm:p-3">
               <div class="flex h-8 w-8 shrink-0 items-center justify-center">
                 <img :src="item.icon" alt="" class="h-6 w-6 object-contain" />
               </div>
@@ -484,15 +508,15 @@ const companyStats = [
             </div>
           </div>
 
-          <div class="mt-10 flex flex-wrap gap-4">
+          <div class="mt-4 sm:mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
             <a
-              class="inline-flex h-12 items-center justify-center rounded-xl bg-[#37b5bd] px-8 text-[17px] font-semibold text-white transition hover:bg-[#2fa3aa]"
+              class="inline-flex h-12 w-full items-center justify-center rounded-xl bg-[#37b5bd] px-8 text-[17px] font-semibold text-white transition hover:bg-[#2fa3aa] sm:w-auto"
               href="#contact-form"
             >
               Подать заявку
             </a>
             <a
-              class="inline-flex h-12 items-center justify-center rounded-xl border border-slate-500/55 bg-white/30 px-8 text-[17px] font-medium text-slate-800 transition hover:bg-white/50"
+              class="inline-flex h-12 w-full items-center justify-center rounded-xl border border-slate-500/55 bg-white/30 px-8 text-[16px] font-medium text-[rgba(31,58,95,1)] transition backdrop-blur-[3px] hover:bg-white/50 [font-family:Inter,sans-serif] sm:w-auto"
               href="#pricing"
             >
               Наши услуги
@@ -502,13 +526,13 @@ const companyStats = [
       </div>
     </section>
 
-    <section id="about" class="bg-white px-6 py-16 sm:px-10 lg:px-14 lg:py-20">
+    <section id="about" class="bg-white py-8 sm:py-16 lg:py-20">
       <div class="container-default grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
         <article class="max-w-[470px]">
           <h2 class="text-[36px] font-semibold leading-tight tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif] max-sm:text-3xl">
             О нашей компании
           </h2>
-          <div class="mt-7 space-y-5 text-[16px] font-normal leading-8 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+          <div class="mt-4 sm:mt-7 space-y-3 sm:space-y-5 text-[16px] font-normal leading-8 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
             <p>
               Мы - профессиональное кадастровое агентство по оценке недвижимости с проверенным опытом предоставления
               точных, юридически обоснованных оценок всех типов недвижимости. Наша команда лицензированных оценщиков
@@ -533,37 +557,33 @@ const companyStats = [
           </div>
         </article>
 
-        <div class="grid gap-x-5 gap-y-7 sm:grid-cols-2">
+        <div class="grid grid-cols-2 gap-3 sm:gap-5">
           <article
-            v-for="stat in companyStats.slice(0, 2)"
+            v-for="stat in companyStats"
             :key="stat.label"
-            class="min-h-[215px] rounded-[18px] border border-slate-200 bg-white px-8 py-6 shadow-[0_6px_18px_rgba(15,23,42,0.04)]"
+            class="min-h-[138px] rounded-[16px] border border-slate-200 bg-white px-4 py-4 text-center shadow-[0_6px_18px_rgba(15,23,42,0.04)] sm:min-h-[215px] sm:rounded-[18px] sm:px-8 sm:py-6"
           >
-            <p class="text-[104px] font-semibold leading-[0.9] tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
-              {{ stat.value }}
+            <p
+              class="font-semibold leading-none tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif] sm:text-[104px] sm:leading-[0.9]"
+              :class="stat.mobileValue ? 'text-[30px] sm:text-[96px]' : 'text-[36px]'"
+            >
+              <template v-if="stat.mobileValue">
+                <span class="sm:hidden">{{ stat.mobileValue }}</span>
+                <span class="hidden whitespace-pre-line sm:inline">{{ stat.value }}</span>
+              </template>
+              <template v-else>
+                {{ stat.value }}
+              </template>
             </p>
-            <p class="mt-6 max-w-[160px] text-[16px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+            <p class="mt-3 text-[16px] font-normal leading-5 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif] sm:mt-6 sm:max-w-[160px] sm:leading-6">
               {{ stat.label }}
             </p>
           </article>
-
-          <div
-            v-for="stat in companyStats.slice(2)"
-            :key="stat.label"
-            class="border-t border-slate-200 px-2 pt-7 sm:px-6"
-          >
-            <p class="text-[56px] font-semibold leading-none tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
-              {{ stat.value }}
-            </p>
-            <p class="mt-4 max-w-[190px] text-[16px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
-              {{ stat.label }}
-            </p>
-          </div>
         </div>
       </div>
     </section>
 
-    <section class="bg-[rgba(233,237,242,1)] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
+    <section id="team" class="bg-[rgba(233,237,242,1)] py-14 lg:py-20">
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
@@ -588,7 +608,8 @@ const companyStats = [
       </div>
     </section>
 
-    <section class="container-default grid gap-10 py-8 sm:py-10 lg:grid-cols-[0.94fr_1.06fr] lg:items-center lg:py-14">
+    <section class="hidden py-8 sm:block sm:py-10 lg:py-14">
+      <div class="container-default grid gap-10 lg:grid-cols-[0.94fr_1.06fr] lg:items-center">
       <div>
         <div class="max-w-2xl">
           <h2 class="text-[36px] font-semibold leading-tight tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif] max-sm:text-3xl">
@@ -628,11 +649,11 @@ const companyStats = [
         </div>
       </div>
 
-      <div class="relative mx-auto w-full max-w-[520px] lg:mx-0">
+      <div class="relative mx-auto w-full max-w-[320px] sm:max-w-[520px] sm:px-0 lg:mx-0">
         <div class="overflow-hidden rounded-[22px] shadow-sm">
           <img
             alt="Преимущества компании"
-            class="h-[420px] w-full object-cover"
+            class="h-[300px] sm:h-[420px] w-full object-cover"
             src="/image/advantages.webp"
           />
         </div>
@@ -645,9 +666,10 @@ const companyStats = [
           </p>
         </div>
       </div>
+      </div>
     </section>
 
-    <section class="bg-[rgba(233,237,242,1)] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
+    <section id="main-services" class="bg-[rgba(233,237,242,1)] py-14 lg:py-20">
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="text-[36px] font-semibold tracking-tight text-center text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
@@ -676,57 +698,86 @@ const companyStats = [
       </div>
     </section>
 
-    <section class="px-2 py-6 sm:px-4">
+    <section id="reviews" class="bg-[rgba(233,237,242,1)] py-10 sm:bg-transparent sm:py-6">
       <div class="container-default">
-      <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
-          Как это работает
-        </h2>
-        <p class="mt-4 text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
-          Простой и прозрачный процесс от заявки до финального отчета
-        </p>
-      </div>
-
-      <div class="mt-12 grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 xl:grid-cols-4">
-        <div v-for="(step, index) in processSteps" :key="step.step" class="relative h-full">
-          <div
-            v-if="index < processSteps.length - 1"
-            class="absolute left-[calc(100%)] top-1/2 z-10 hidden h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full bg-[#37b5bd] text-white xl:flex"
-          >
-            <Icon class="h-6 w-6" name="lucide:arrow-right" />
+        <div class="sm:hidden">
+          <div class="mx-auto max-w-3xl text-center">
+            <h2 class="text-[36px] font-semibold leading-[1.05] tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+              Как это работает
+            </h2>
+            <p class="mt-4 text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+              Простой процесс оценки в 4 шага
+            </p>
           </div>
 
-          <article class="flex h-full flex-col rounded-[24px] border border-slate-200 bg-white px-6 pb-7 pt-5 text-center shadow-sm">
-            <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#37b5bd] text-xl font-semibold text-white">
-              {{ step.step }}
-            </div>
-
-            <div class="mx-auto mt-5 flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-slate-700">
-              <img :src="step.icon" alt="" class="h-6 w-6 object-contain" />
-            </div>
-
-            <h3 class="mt-5 text-[18px] font-medium leading-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
-              {{ step.title }}
-            </h3>
-            <p class="mx-auto mt-3 max-w-[220px] flex-1 text-[14px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
-              {{ step.description }}
-            </p>
-          </article>
+          <div class="mt-10 space-y-9">
+            <article v-for="step in processStepsMobile" :key="step.step" class="flex items-start gap-4">
+              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#37b5bd] text-[18px] font-semibold leading-none text-white">
+                {{ step.step }}
+              </div>
+              <div class="pt-1">
+                <h3 class="text-[22px] font-semibold leading-[1.2] text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+                  {{ step.title }}
+                </h3>
+                <p class="mt-2 max-w-[520px] text-[17px] font-normal leading-[1.35] text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+                  {{ step.description }}
+                </p>
+              </div>
+            </article>
+          </div>
         </div>
-      </div>
 
-      <div class="mt-12 text-center">
-        <p class="text-[16px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
-          Готовы начать? Весь процесс обычно занимает 5-7 рабочих дней.
-        </p>
-        <a class="mt-5 inline-flex rounded-2xl bg-[#37b5bd] px-8 py-3 text-base font-semibold text-white transition hover:bg-[#2fa3aa]" href="#contact-form">
-          Подать заявку
-        </a>
-      </div>
+        <div class="hidden sm:block">
+          <div class="mx-auto max-w-3xl text-center">
+            <h2 class="text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+              Как это работает
+            </h2>
+            <p class="mt-4 text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+              Простой и прозрачный процесс от заявки до финального отчета
+            </p>
+          </div>
+
+          <div class="mt-12 grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 xl:grid-cols-4">
+            <div v-for="(step, index) in processSteps" :key="step.step" class="relative h-full">
+              <div
+                v-if="index < processSteps.length - 1"
+                class="absolute left-[calc(100%)] top-1/2 z-10 hidden h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full bg-[#37b5bd] text-white xl:flex"
+              >
+                <img :src="arrowRightIcon" alt="" class="h-6 w-6 object-contain" />
+              </div>
+
+              <article class="flex h-full flex-col rounded-[24px] border border-slate-200 bg-white px-6 pb-7 pt-5 text-center shadow-sm">
+                <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#37b5bd] text-xl font-semibold text-white">
+                  {{ step.step }}
+                </div>
+
+                <div class="mx-auto mt-5 flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-slate-700">
+                  <img :src="step.icon" alt="" class="h-6 w-6 object-contain" />
+                </div>
+
+                <h3 class="mt-5 text-[18px] font-medium leading-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+                  {{ step.title }}
+                </h3>
+                <p class="mx-auto mt-3 max-w-[220px] flex-1 text-[14px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+                  {{ step.description }}
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <div class="mt-12 text-center">
+            <p class="text-[16px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+              Готовы начать? Весь процесс обычно занимает 5-7 рабочих дней.
+            </p>
+            <a class="mt-5 inline-flex rounded-2xl bg-[#37b5bd] px-8 py-3 text-base font-semibold text-white transition hover:bg-[#2fa3aa]" href="#contact-form">
+              Подать заявку
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="directions" class="px-2 py-6 sm:px-4">
+    <section id="directions" class="hidden py-6 sm:block">
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
@@ -826,7 +877,7 @@ const companyStats = [
       </div>
     </section>
 
-    <section class="bg-[rgba(233,237,242,1)] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
+    <section class="hidden bg-[rgba(233,237,242,1)] py-14 sm:block lg:py-20">
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
@@ -889,7 +940,7 @@ const companyStats = [
       </div>
     </section>
 
-    <section class="px-2 py-6 sm:px-4">
+    <section class="hidden py-6 sm:block">
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
@@ -954,7 +1005,7 @@ const companyStats = [
       </div>
     </section>
 
-    <section id="pricing" class="bg-[rgba(233,237,242,1)] px-6 py-14 sm:px-10 lg:px-14 lg:py-20">
+    <section id="pricing" class="bg-[rgba(233,237,242,1)] py-14 lg:py-20">
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
@@ -973,7 +1024,7 @@ const companyStats = [
           :class="
             pricingOpenStates[index]
               ? 'p-[4px]'
-              : 'border border-slate-200 border-l-[4px] border-l-[rgba(47,164,169,1)] bg-white hover:border-l-[8px]'
+              : 'border border-slate-200 border-l-[4px] border-l-[rgba(47,164,169,1)] bg-white sm:hover:border-l-[8px]'
           "
           :style="
             pricingOpenStates[index]
@@ -984,7 +1035,7 @@ const companyStats = [
           <div class="overflow-hidden bg-white shadow-sm" :class="pricingOpenStates[index] ? 'rounded-[13px]' : 'rounded-[14px]'">
             <button
               type="button"
-              class="flex w-full cursor-pointer items-center justify-between gap-4 py-6 px-6 text-left group-hover:pl-[20px]"
+              class="flex w-full cursor-pointer items-center justify-between gap-4 py-6 px-6 text-left sm:group-hover:pl-[20px]"
               @click="togglePricingAccordion(index)"
             >
               <span class="text-[24px] font-medium leading-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif] max-sm:text-xl">
@@ -1029,7 +1080,7 @@ const companyStats = [
                       {{ entry.price }}
                     </p>
                     <a
-                      class="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[#2fa4a9] px-6 text-[16px] font-medium text-white transition hover:bg-[#289299]"
+                      class="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[#2fa4a9] px-6 text-[16px] font-medium text-white transition sm:hover:bg-[#289299]"
                       href="#contact-form"
                     >
                       Подать заявку

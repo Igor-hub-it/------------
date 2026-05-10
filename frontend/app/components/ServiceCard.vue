@@ -28,7 +28,7 @@ defineProps<{
 <template>
   <article class="flex h-full flex-col overflow-hidden rounded-[24px] border border-slate-200 bg-white shadow-sm">
     <div
-      class="relative h-[200px] bg-slate-200 bg-cover bg-bottom"
+      class="relative h-[130px] sm:h-[200px] bg-slate-200 bg-cover bg-bottom"
       :style="cardImage ? { backgroundImage: `url('${cardImage}')` } : undefined"
     >
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.2),transparent_35%),linear-gradient(180deg,rgba(15,23,42,0.04),rgba(15,23,42,0.18))]"></div>
