@@ -46,11 +46,8 @@ useSeoMeta({
 })
 
 const mainHeroStyle = {
-  backgroundImage:
-    "linear-gradient(90deg, rgba(15, 23, 42, 0.0) 0%, rgba(15, 23, 42, 0.0) 42%, rgba(15, 23, 42, 0.0) 100%), url('/image/banner-main.webp')",
-  backgroundSize: 'cover',
-  backgroundPosition: 'center bottom',
-  backgroundRepeat: 'no-repeat'
+  '--hero-banner-desktop': "url('/image/banner-main.webp')",
+  '--hero-banner-mobile': "url('/image/banner-main-mobile.webp')"
 }
 
 const heroAdvantages = [
@@ -484,7 +481,7 @@ const companyStats = [
   <div class="4">
     <section
       id="services"
-      class="overflow-hidden py-4 sm:py-16 lg:flex lg:h-[620px] lg:items-center lg:py-0"
+      class="main-hero-banner overflow-hidden py-4 sm:py-16 lg:flex lg:h-[620px] lg:items-center lg:py-0"
       :style="mainHeroStyle"
     >
       <div class="container-default">
@@ -516,7 +513,7 @@ const companyStats = [
               Подать заявку
             </a>
             <a
-              class="inline-flex h-12 w-full items-center justify-center rounded-xl border border-slate-500/55 bg-white/30 px-8 text-[16px] font-medium text-[rgba(31,58,95,1)] transition backdrop-blur-[3px] hover:bg-white/50 [font-family:Inter,sans-serif] sm:w-auto"
+              class="inline-flex h-12 w-full items-center justify-center rounded-xl border font-semibold border-slate-500/55 bg-white/30 px-8 text-[16px] font-medium text-[rgba(31,58,95,1)] transition backdrop-blur-[3px] hover:bg-white/50 [font-family:Inter,sans-serif] sm:w-auto"
               href="#pricing"
             >
               Наши услуги
@@ -532,7 +529,7 @@ const companyStats = [
           <h2 class="text-[36px] font-semibold leading-tight tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif] max-sm:text-3xl">
             О нашей компании
           </h2>
-          <div class="mt-4 sm:mt-7 space-y-3 sm:space-y-5 text-[16px] font-normal leading-8 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+          <div class="mt-4 sm:mt-7 space-y-3 sm:space-y-5 text-[16px] font-normal leading-6 sm:leading-8 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
             <p>
               Мы - профессиональное кадастровое агентство по оценке недвижимости с проверенным опытом предоставления
               точных, юридически обоснованных оценок всех типов недвижимости. Наша команда лицензированных оценщиков
@@ -583,13 +580,13 @@ const companyStats = [
       </div>
     </section>
 
-    <section id="team" class="bg-[rgba(233,237,242,1)] py-14 lg:py-20">
+    <section id="team" class="bg-[rgba(233,237,242,1)] py-6 lg:py-20">
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+        <h2 class="text-[28px] sm:text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
           Ключевые преимущества
         </h2>
-        <p class="mt-4 text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+        <p class="mt-2 sm:mt-4 text-[14px] sm:text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
           Почему клиенты доверяют нам оценку своей недвижимости
         </p>
       </div>
@@ -599,8 +596,8 @@ const companyStats = [
           <div class="flex h-11 w-11 items-center justify-center rounded-full bg-[rgba(233,237,242,1)] text-slate-700">
             <img :src="item.icon" alt="" class="h-6 w-6 object-contain" />
           </div>
-          <h3 class="mt-5 text-[18px] font-medium leading-7 text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">{{ item.title }}</h3>
-          <p class="mt-3 text-[14px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+          <h3 class="mt-3 sm:mt-5 text-[18px] font-medium leading-7 text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">{{ item.title }}</h3>
+          <p class="mt-1 sm:mt-3 text-[14px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
             {{ item.description }}
           </p>
         </article>
@@ -653,7 +650,7 @@ const companyStats = [
         <div class="overflow-hidden rounded-[22px] shadow-sm">
           <img
             alt="Преимущества компании"
-            class="h-[300px] sm:h-[420px] w-full object-cover"
+            class="h-[300px] sm:h-[420px] w-auto object-cover rounded-[22px]"
             src="/image/advantages.webp"
           />
         </div>
@@ -669,13 +666,13 @@ const companyStats = [
       </div>
     </section>
 
-    <section id="main-services" class="bg-[rgba(233,237,242,1)] py-14 lg:py-20">
+    <section id="main-services" class="bg-[rgba(233,237,242,1)] py-6 sm:py-14 lg:py-20">
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-[36px] font-semibold tracking-tight text-center text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+        <h2 class="text-[28px] sm:text-[36px] font-semibold tracking-tight text-center text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
           Наши услуги
         </h2>
-        <p class="mt-4 text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+        <p class="mt-2 sm:mt-4 text-[14px] sm:text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
           Комплексные оценочные решения для каждого типа недвижимости
         </p>
       </div>
@@ -702,10 +699,10 @@ const companyStats = [
       <div class="container-default">
         <div class="sm:hidden">
           <div class="mx-auto max-w-3xl text-center">
-            <h2 class="text-[36px] font-semibold leading-[1.05] tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+            <h2 class="text-[28px] sm:text-[36px] font-semibold leading-[1.05] tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
               Как это работает
             </h2>
-            <p class="mt-4 text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+            <p class="mt-2 sm:mt-4 text-[14px] sm:text-[14px] sm:text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
               Простой процесс оценки в 4 шага
             </p>
           </div>
@@ -729,10 +726,10 @@ const companyStats = [
 
         <div class="hidden sm:block">
           <div class="mx-auto max-w-3xl text-center">
-            <h2 class="text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+            <h2 class="text-[28px] sm:text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
               Как это работает
             </h2>
-            <p class="mt-4 text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+            <p class="mt-2 sm:mt-4 text-[14px] sm:text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
               Простой и прозрачный процесс от заявки до финального отчета
             </p>
           </div>
@@ -780,10 +777,10 @@ const companyStats = [
     <section id="directions" class="hidden py-6 sm:block">
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+        <h2 class="text-[28px] sm:text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
           Наши направления в виде схемы
         </h2>
-        <p class="mt-4 text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+        <p class="mt-2 sm:mt-4 text-[14px] sm:text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
           Полный перечень всех работ по оценке
         </p>
       </div>
@@ -880,10 +877,10 @@ const companyStats = [
     <section class="hidden bg-[rgba(233,237,242,1)] py-14 sm:block lg:py-20">
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+        <h2 class="text-[28px] sm:text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
           Наши эксперты и сертификация
         </h2>
-        <p class="mx-auto mt-4 max-w-2xl text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+        <p class="mx-auto mt-2 sm:mt-4 max-w-2xl text-[14px] sm:text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
           Лицензированные профессионалы с подтвержденным опытом и признанием в отрасли
         </p>
       </div>
@@ -943,10 +940,10 @@ const companyStats = [
     <section class="hidden py-6 sm:block">
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+        <h2 class="text-[28px] sm:text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
           Отзывы клиентов
         </h2>
-        <p class="mt-4 text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+        <p class="mt-2 sm:mt-4 text-[14px] sm:text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
           Что наши клиенты говорят о наших услугах
         </p>
       </div>
@@ -1008,10 +1005,10 @@ const companyStats = [
     <section id="pricing" class="bg-[rgba(233,237,242,1)] py-14 lg:py-20">
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+        <h2 class="text-[28px] sm:text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
           Прейскурант
         </h2>
-        <p class="mx-auto mt-4 max-w-2xl text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+        <p class="mx-auto mt-2 sm:mt-4 max-w-2xl text-[14px] sm:text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
           Лицензированные профессионалы с подтвержденным опытом и признанием в отрасли
         </p>
       </div>
@@ -1099,3 +1096,18 @@ const companyStats = [
     <ContactSection />
   </div>
 </template>
+
+<style scoped>
+.main-hero-banner {
+  background-image: linear-gradient(90deg, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0) 42%, rgba(15, 23, 42, 0) 100%), var(--hero-banner-desktop);
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 639px) {
+  .main-hero-banner {
+    background-image: linear-gradient(90deg, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0) 42%, rgba(15, 23, 42, 0) 100%), var(--hero-banner-mobile);
+  }
+}
+</style>

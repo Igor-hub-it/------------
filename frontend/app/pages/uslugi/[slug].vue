@@ -13,6 +13,12 @@ import arrowRightIcon from '~/assets/icon/arrow-right.svg'
 const route = useRoute()
 const slug = computed(() => String(route.params.slug || ''))
 const service = computed(() => getServiceBySlug(slug.value))
+const mobileHeroBannerBySlug: Record<string, string> = {
+  'zhilaya-nedvizhimost': '/image/banner-zhilaya-mobile.webp',
+  'nezhilaya-nedvizhimost': '/image/banner-nezhilaya-mobile.webp',
+  'zemelnyj-uchastok': '/image/banner-zemlya-mobile.webp',
+  'kadastrovaya-stoimost': '/image/banner-kadastr-mobile.webp'
+}
 
 if (!service.value) {
   throw createError({
@@ -27,9 +33,8 @@ useSeoMeta({
 })
 
 const heroStyle = computed(() => ({
-  backgroundImage: `linear-gradient(90deg, rgba(15, 23, 42, 0.72) 0%, rgba(15, 23, 42, 0.46) 42%, rgba(15, 23, 42, 0.24) 100%), url('${service.value?.heroBanner || ''}')`,
-  backgroundSize: 'cover',
-  backgroundPosition: 'center'
+  '--hero-banner-desktop': `url('${service.value?.heroBanner || ''}')`,
+  '--hero-banner-mobile': `url('${mobileHeroBannerBySlug[service.value?.slug || ''] || service.value?.heroBanner || ''}')`
 }))
 
 const heroTitle = computed(() => {
@@ -301,33 +306,99 @@ const serviceExtraBlocks = computed<ServiceExtraBlock[]>(() => {
 
   return []
 })
+
+const landAreaDetails = [
+  {
+    title: 'Земельный участок площадью\nменее 10 соток',
+    description: 'Оценка небольших земельных наделов для личного пользования, садоводства или ИЖС.',
+    image: '/image/land-1.webp'
+  },
+  {
+    title: 'Земельный участок площадью\nот 10 до 50 соток',
+    description: 'Оценка участков среднего размера под индивидуальное жилищное строительство, фермерское хозяйство или коммерческое использование.',
+    image: '/image/land-2.webp'
+  },
+  {
+    title: 'Земельный участок площадью\nот 50 соток до 1 Га',
+    description: 'Оценка крупных наделов под сельскохозяйственные нужды, коттеджные поселки или коммерческую застройку.',
+    image: '/image/land-3.webp'
+  },
+  {
+    title: 'Земельный участок площадью\nот 1 до 100 Га',
+    description: 'Оценка значительных территорий под сельскохозяйственное производство, инвестиционные проекты или промышленное освоение.',
+    image: '/image/land-4.webp'
+  },
+  {
+    title: 'Земельный участок площадью\nот 100 до 1000 Га',
+    description: 'Оценка масштабных земельных массивов для агропромышленных комплексов, крупных инвестиционных проектов или перераспределения земель.',
+    image: '/image/land-5.webp'
+  },
+  {
+    title: 'Земельный участок площадью\nболее 1000 Га',
+    description: 'Оценка обширных территорий для стратегических инвестиций, крупных агрохолдингов или государственных нужд.',
+    image: '/image/land-6.webp'
+  }
+]
+
+const cadastreObjectDetails = [
+  {
+    title: 'Земельный участок\n(любой категории и назначения)',
+    description:
+      'Оценка земельного участка для оспаривания кадастровой стоимости позволяет существенно снизить налоговую нагрузку и арендные платежи.',
+    image: '/image/kadastr-2.webp'
+  },
+  {
+    title: 'Нежилое здание',
+    description:
+      'Оценка нежилого здания для снижения кадастровой стоимости необходима, если кадастровая оценка была проведена с ошибками или не учитывает фактическое состояние объекта.',
+    image: '/image/kadastr-3.webp'
+  },
+  {
+    title: 'Жилое помещение\n(квартира/комната/гостинка/кухня-прихожая)',
+    description:
+      'Для владельцев квартир и комнат снижение кадастровой стоимости означает уменьшение налога на имущество и снижение сопутствующих расходов.',
+    image: '/image/kadastr-4.webp'
+  },
+  {
+    title: 'Нежилое помещение',
+    description:
+      'Нежилые помещения в многоквартирных домах также могут быть переоценены, если их кадастровая стоимость завышена и не отражает рыночных условий.',
+    image: '/image/kadastr-5.webp'
+  },
+  {
+    title: 'Жилое здание\n(дом/коттедж/таунхаус/дача)',
+    description:
+      'Для владельцев индивидуальных жилых домов снижение кадастровой стоимости позволяет уменьшить земельный и имущественный налог.',
+    image: '/image/kadastr-6.webp'
+  }
+]
 </script>
 
 <template>
-  <div class="space-y-12 sm:py-14">
+  <div class="">
     <section
-      class="overflow-hidden py-16 sm:py-20 lg:flex lg:h-[620px] lg:items-center lg:py-0"
+      class="service-hero-banner overflow-hidden py-2 sm:py-20 mb-10 lg:flex lg:h-[620px] lg:items-center lg:py-0"
       :style="heroStyle"
     >
       <div class="container-default">
-        <div class="max-w-[900px] rounded-[28px] border border-white/20 bg-[rgba(15,23,42,0.35)] p-6 shadow-xl backdrop-blur-[4px] sm:p-8 lg:p-10">
-          <h1 class="text-[48px] font-semibold leading-[1.1] text-[rgba(255,255,255,1)] [font-family:Inter,sans-serif]">
+        <div class="max-w-[900px] rounded-[28px] border border-white/20 bg-[rgba(15,23,42,0.35)] p-4 shadow-xl backdrop-blur-[4px] sm:p-8 lg:p-10">
+          <h1 class="text-[24px] sm:text-[48px] font-semibold leading-[1.1] text-[rgba(255,255,255,1)] [font-family:Inter,sans-serif]">
             {{ heroTitle }}
           </h1>
-          <p class="mt-6 max-w-4xl text-[18px] font-normal leading-7 text-[rgba(233,237,242,1)] [font-family:Inter,sans-serif]">{{ service?.description }}</p>
+          <p class="mt-2 sm:mt-6 max-w-4xl text-[14px] sm:text-[18px] font-normal leading-5 sm:leading-7 text-[rgba(233,237,242,1)] [font-family:Inter,sans-serif]">{{ service?.description }}</p>
 
-          <div class="mt-8 grid gap-4 md:grid-cols-2">
+          <div class="mt-4 sm:mt-8 grid gap-2 sm:gap-4 md:grid-cols-2">
             <article
               v-for="item in heroUseCases"
               :key="item.title"
-              class="flex items-start gap-3 rounded-[16px] bg-[rgba(233,237,242,0)] p-4"
+              class="flex items-start gap-3 rounded-[16px] bg-[rgba(233,237,242,0)]  sm:p-4"
             >
-              <div class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                <img :src="item.icon" alt="" class="h-6 w-6 object-contain" />
+              <div class="flex h-5 w-5 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-full">
+                <img :src="item.icon" alt="" class="h-5 w-5 sm:h-6 sm:w-6 object-contain" />
               </div>
               <div>
-                <p class="text-[16px] font-medium leading-6 text-white [font-family:Inter,sans-serif]">{{ item.title }}</p>
-                <p class="mt-1 text-[14px] font-normal leading-6 text-white [font-family:Inter,sans-serif]">{{ item.description }}</p>
+                <p class="text-[16px] font-medium leading-5 sm:leading-6 text-white [font-family:Inter,sans-serif]">{{ item.title }}</p>
+                <p class="mt-1 text-[12px] sm:text-[14px] font-normal leading-5 sm:leading-6 text-white [font-family:Inter,sans-serif]">{{ item.description }}</p>
               </div>
             </article>
           </div>
@@ -353,12 +424,12 @@ const serviceExtraBlocks = computed<ServiceExtraBlock[]>(() => {
 
     <section class="container-default">
       <article class="rounded-[24px]">
-        <h2 class="text-center text-[36px] font-semibold leading-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+        <h2 class="text-center text-[28px] sm:text-[36px] font-semibold leading-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
           {{ servicePurposeContent.title }}
         </h2>
 
         <div class="mt-8 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-          <div class="lg:w-[95%] space-y-5 text-[17px] font-normal leading-8 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+          <div class="lg:w-[95%] space-y-5 text-[17px] font-normal leading-6 sm:leading-8 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
             <p v-for="paragraph in servicePurposeContent.paragraphs" :key="paragraph">
               {{ paragraph }}
             </p>
@@ -373,7 +444,7 @@ const serviceExtraBlocks = computed<ServiceExtraBlock[]>(() => {
           </div>
 
           <div class="overflow-hidden rounded-[18px] shadow-sm lg:justify-self-end">
-            <img :src="servicePurposeImage" :alt="servicePurposeContent.title" class="h-[480px] w-[480px] object-cover" />
+            <img :src="servicePurposeImage" :alt="servicePurposeContent.title" class=" sm:h-[480px] sm:w-[480px] w-full h-auto object-cover" />
           </div>
         </div>
       </article>
@@ -383,10 +454,10 @@ const serviceExtraBlocks = computed<ServiceExtraBlock[]>(() => {
       <div class="container-default">
         <div class="sm:hidden">
           <div class="mx-auto max-w-3xl text-center">
-            <h2 class="text-[36px] font-semibold leading-[1.05] tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+            <h2 class="text-[28px] sm:text-[36px] font-semibold leading-[1.05] tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
               Как это работает
             </h2>
-            <p class="mt-4 text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+            <p class="mt-2 sm:mt-4 text-[14px] sm:text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
               Простой процесс оценки в 4 шага
             </p>
           </div>
@@ -410,10 +481,10 @@ const serviceExtraBlocks = computed<ServiceExtraBlock[]>(() => {
 
         <div class="hidden sm:block">
           <div class="mx-auto max-w-3xl text-center">
-            <h2 class="text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+            <h2 class="text-[28px] sm:text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
               Как это работает
             </h2>
-            <p class="mt-4 text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+            <p class="mt-2 sm:mt-4 text-[14px] sm:text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
               Простой и прозрачный процесс от заявки до финального отчета
             </p>
           </div>
@@ -458,18 +529,18 @@ const serviceExtraBlocks = computed<ServiceExtraBlock[]>(() => {
       </div>
     </section>
 
-    <section v-if="serviceExtraBlocks.length" class="container-default space-y-8">
-      <div v-for="(block, index) in serviceExtraBlocks" :key="`${block.title || 'intro'}-${index}`" class="space-y-8">
+    <section v-if="service?.slug === 'kadastrovaya-stoimost' && serviceExtraBlocks.length" class="container-default space-y-8">
+      <div v-for="(block, index) in serviceExtraBlocks" :key="`kadastr-${block.title || 'intro'}-${index}`" class="space-y-8">
         <article class="rounded-[24px]">
           <h2
             v-if="block.title"
-            class="text-[36px] w-[85%] mx-auto font-semibold text-center mb-8 mt-24 leading-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]"
+            class="text-[28px] sm:text-[36px] sm:w-[85%] w-full mx-auto font-semibold text-center mb-8 mt-24 leading-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]"
           >
             {{ block.title }}
           </h2>
           <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
             <div
-              class="space-y-5 text-[17px] w-[95%] font-normal leading-8 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]"
+              class="space-y-5 text-[17px] w-[95%] font-normal leading-6 sm:leading-8 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]"
               :class="block.imageLeft ? 'text-right lg:order-2 lg:justify-self-end' : 'lg:order-1'"
             >
               <p v-for="paragraph in block.paragraphs" :key="paragraph">
@@ -483,7 +554,7 @@ const serviceExtraBlocks = computed<ServiceExtraBlock[]>(() => {
             </div>
 
             <div class="overflow-hidden shadow-sm" :class="block.imageLeft ? 'lg:order-1' : 'lg:order-2 lg:justify-self-end'">
-              <img :src="block.image" :alt="block.title || 'Оценка нежилой недвижимости'" class="h-[480px] w-[480px] object-cover rounded-[18px]" />
+              <img :src="block.image" :alt="block.title || 'Оценка нежилой недвижимости'" class="sm:h-[480px] sm:w-[480px] w-full h-auto object-cover rounded-[18px]" />
             </div>
           </div>
         </article>
@@ -499,6 +570,135 @@ const serviceExtraBlocks = computed<ServiceExtraBlock[]>(() => {
       </div>
     </section>
 
+    <section v-if="service?.slug === 'kadastrovaya-stoimost'" class="bg-[rgba(233,237,242,1)] py-10 sm:py-12">
+      <div class="container-default">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2 class="text-[28px] sm:text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+            Выберите объект для снижения кадастровой стоимости
+          </h2>
+          <p class="mt-2 sm:mt-4 text-[14px] sm:text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+            Любых категорий и назначения
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-6 md:grid-cols-2">
+          <article
+            v-for="item in cadastreObjectDetails"
+            :key="item.title"
+            class="flex h-full flex-col overflow-hidden rounded-[16px] border border-slate-200 bg-white shadow-sm"
+          >
+            <img :src="item.image" :alt="item.title.replace('\n', ' ')" class="h-[170px] w-full object-cover" />
+            <div class="flex flex-1 flex-col gap-4 p-5">
+              <h3 class="whitespace-pre-line text-[32px] font-medium leading-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+                {{ item.title }}
+              </h3>
+              <p class="text-[14px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+                {{ item.description }}
+              </p>
+              <a
+                class="mt-auto inline-flex h-12 w-full items-center justify-center rounded-xl bg-[#37b5bd] px-6 text-[16px] font-medium text-white transition sm:hover:bg-[#2fa3aa]"
+                href="#contact-form"
+              >
+                Подать заявку
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section v-if="serviceExtraBlocks.length && service?.slug !== 'kadastrovaya-stoimost'" class="container-default space-y-8">
+      <div v-for="(block, index) in serviceExtraBlocks" :key="`${block.title || 'intro'}-${index}`" class="space-y-8">
+        <article class="rounded-[24px]">
+          <h2
+            v-if="block.title"
+            class="text-[28px] sm:text-[36px] sm:w-[85%] w-full mx-auto font-semibold text-center mb-8 mt-24 leading-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]"
+          >
+            {{ block.title }}
+          </h2>
+          <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+            <div
+              class="space-y-5 text-[17px] w-[95%] font-normal leading-6 sm:leading-8 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]"
+              :class="block.imageLeft ? 'text-right lg:order-2 lg:justify-self-end' : 'lg:order-1'"
+            >
+              <p v-for="paragraph in block.paragraphs" :key="paragraph">
+                {{ paragraph }}
+              </p>
+              <ul v-if="block.bullets?.length" class="space-y-1">
+                <li v-for="bullet in block.bullets" :key="bullet">
+                  • {{ bullet }}
+                </li>
+              </ul>
+            </div>
+
+            <div class="overflow-hidden shadow-sm" :class="block.imageLeft ? 'lg:order-1' : 'lg:order-2 lg:justify-self-end'">
+              <img :src="block.image" :alt="block.title || 'Оценка нежилой недвижимости'" class="sm:h-[480px] sm:w-[480px] w-full h-auto object-cover rounded-[18px]" />
+            </div>
+          </div>
+        </article>
+
+        <div v-if="block.showCtaAfter" class="text-center">
+          <p class="text-[16px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+            Готовы начать? Весь процесс занимает от 1 рабочего дня
+          </p>
+          <a class="mt-5 inline-flex rounded-2xl bg-[#37b5bd] px-8 py-3 text-base font-semibold text-white transition sm:hover:bg-[#2fa3aa]" href="#contact-form">
+            Подать заявку
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section v-if="service?.slug === 'zemelnyj-uchastok'" class="bg-[rgba(233,237,242,1)] py-10 sm:py-12">
+      <div class="container-default">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2 class="text-[28px] sm:text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+            Детализация по площади земельных участков
+          </h2>
+          <p class="mt-2 sm:mt-4 text-[14px] sm:text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+            Решения для участков любой площади
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-6 md:grid-cols-2">
+          <article
+            v-for="item in landAreaDetails"
+            :key="item.title"
+            class="flex h-full flex-col overflow-hidden rounded-[16px] border border-slate-200 bg-white shadow-sm"
+          >
+            <img :src="item.image" :alt="item.title.replace('\n', ' ')" class="h-[170px] w-full object-cover" />
+            <div class="flex flex-1 flex-col gap-4 p-5">
+              <h3 class="whitespace-pre-line text-[28px] sm:text-[32px] font-medium leading-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
+                {{ item.title }}
+              </h3>
+              <p class="text-[14px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
+                {{ item.description }}
+              </p>
+              <a
+                class="mt-auto inline-flex h-12 w-full items-center justify-center rounded-xl bg-[#37b5bd] px-6 text-[16px] font-medium text-white transition sm:hover:bg-[#2fa3aa]"
+                href="#contact-form"
+              >
+                Подать заявку
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <ContactSection :preset-property-type="service?.shortTitle" />
   </div>
 </template>
+
+<style scoped>
+.service-hero-banner {
+  background-image: linear-gradient(90deg, rgba(15, 23, 42, 0.72) 0%, rgba(15, 23, 42, 0.46) 42%, rgba(15, 23, 42, 0.24) 100%), var(--hero-banner-desktop);
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 639px) {
+  .service-hero-banner {
+    background-image: linear-gradient(90deg, rgba(15, 23, 42, 0.72) 0%, rgba(15, 23, 42, 0.46) 42%, rgba(15, 23, 42, 0.24) 100%), var(--hero-banner-mobile);
+  }
+}
+</style>
