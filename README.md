@@ -3,7 +3,7 @@
 Проект разделён на два независимых приложения:
 
 - `frontend` — сайт на `Nuxt 4`, `Vue 3`, `Tailwind CSS`
-- `backend` — API на `FastAPI` для отправки заявок на email
+- `backend` — API на `FastAPI` для отправки заявок на email через почтовый API
 
 ## Что уже реализовано
 
@@ -15,7 +15,7 @@
   - оценка земельного участка
   - оценка кадастровой стоимости
 - страница политики обработки персональных данных
-- отправка заявок на email через `SMTP`
+- отправка заявок на email через почтовый API по HTTPS
 
 ## Запуск frontend
 
@@ -37,7 +37,9 @@ copy .env.example .env
 uvicorn app.main:app --reload
 ```
 
-Перед запуском укажите в `backend/.env` настройки вашей почты: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `MAIL_FROM`, `MAIL_TO`.
+Перед запуском укажите в `backend/.env` настройки почтового API: `MAIL_API_KEY`, `MAIL_FROM`, `MAIL_TO`.
+
+Для production-деплоя на Timeweb используйте инструкцию `DEPLOY_TIMEWEB.md`.
 
 ## API
 
