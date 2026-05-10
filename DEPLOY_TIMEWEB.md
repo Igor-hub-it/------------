@@ -68,7 +68,7 @@ mkdir -p /var/www/peraks
 Если проект есть в Git:
 
 ```bash
-git clone YOUR_REPOSITORY_URL /var/www/peraks
+git clone https://github.com/Igor-hub-it/------------ /var/www/peraks
 ```
 
 Перейдите в проект:
