@@ -1,7 +1,8 @@
 import os
+import smtplib
+from email.message import EmailMessage
 from pathlib import Path
 
-import httpx
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -45,81 +46,79 @@ def get_allowed_origins() -> list[str]:
     return [origin.strip() for origin in raw_origins.split(",") if origin.strip()]
 
 
-def get_mail_api_settings() -> dict[str, str]:
-    api_url = os.getenv("MAIL_API_URL", "https://api.brevo.com/v3/smtp/email").strip()
-    api_key = os.getenv("MAIL_API_KEY", "").strip()
+def get_smtp_settings() -> dict[str, str | int | bool]:
+    smtp_host = os.getenv("SMTP_HOST", "").strip()
+    smtp_user = os.getenv("SMTP_USER", "").strip()
+    smtp_password = os.getenv("SMTP_PASSWORD", "").strip().replace(" ", "")
     mail_to = os.getenv("MAIL_TO", "").strip()
-    mail_from = os.getenv("MAIL_FROM", "").strip()
-    mail_from_name = os.getenv("MAIL_FROM_NAME", "Peraks").strip()
+    mail_from = os.getenv("MAIL_FROM", smtp_user).strip()
+    smtp_port = int(os.getenv("SMTP_PORT", "587"))
+    smtp_starttls = os.getenv("SMTP_STARTTLS", "true").lower() == "true"
 
-    if not all([api_url, api_key, mail_to, mail_from]):
+    if not all([smtp_host, smtp_user, smtp_password, mail_to, mail_from]):
         raise HTTPException(
             status_code=500,
-            detail="Почтовый API не настроен. Заполните MAIL_API_KEY, MAIL_FROM и MAIL_TO в backend/.env."
+            detail="SMTP не настроен. Заполните SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, MAIL_FROM и MAIL_TO в backend/.env."
         )
 
     return {
-        "api_url": api_url,
-        "api_key": api_key,
+        "smtp_host": smtp_host,
+        "smtp_port": smtp_port,
+        "smtp_user": smtp_user,
+        "smtp_password": smtp_password,
+        "smtp_starttls": smtp_starttls,
         "mail_to": mail_to,
         "mail_from": mail_from,
-        "mail_from_name": mail_from_name,
     }
 
 
-def build_email_text(payload: ApplicationCreate) -> str:
-    return "\n".join(
-        [
-            "На сайте оставлена новая заявка.",
-            "",
-            f"Имя: {payload.name}",
-            f"Email: {payload.email}",
-            f"Телефон: {payload.phone}",
-            f"Тип недвижимости: {payload.property_type}",
-            "",
-            "Сообщение:",
-            payload.message,
-        ]
+def build_email(payload: ApplicationCreate, mail_from: str, mail_to: str) -> EmailMessage:
+    message = EmailMessage()
+    message["Subject"] = f"Новая заявка: {payload.property_type}"
+    message["From"] = mail_from
+    message["To"] = mail_to
+    message["Reply-To"] = payload.email
+    message.set_content(
+        "\n".join(
+            [
+                "На сайте оставлена новая заявка.",
+                "",
+                f"Имя: {payload.name}",
+                f"Email: {payload.email}",
+                f"Телефон: {payload.phone}",
+                f"Тип недвижимости: {payload.property_type}",
+                "",
+                "Сообщение:",
+                payload.message,
+            ]
+        ),
+        charset="utf-8",
     )
+    return message
 
 
 def send_application_email(payload: ApplicationCreate) -> None:
-    settings = get_mail_api_settings()
-    email_payload = {
-        "sender": {
-            "name": settings["mail_from_name"],
-            "email": settings["mail_from"],
-        },
-        "to": [{"email": settings["mail_to"]}],
-        "replyTo": {
-            "email": payload.email,
-            "name": payload.name,
-        },
-        "subject": f"Новая заявка: {payload.property_type}",
-        "textContent": build_email_text(payload),
-    }
+    settings = get_smtp_settings()
+    email_message = build_email(
+        payload=payload,
+        mail_from=str(settings["mail_from"]),
+        mail_to=str(settings["mail_to"]),
+    )
 
     try:
-        response = httpx.post(
-            settings["api_url"],
-            headers={
-                "accept": "application/json",
-                "api-key": settings["api_key"],
-                "content-type": "application/json",
-            },
-            json=email_payload,
-            timeout=15,
-        )
-        response.raise_for_status()
-    except httpx.HTTPStatusError as exc:
+        if settings["smtp_starttls"]:
+            with smtplib.SMTP(str(settings["smtp_host"]), int(settings["smtp_port"])) as server:
+                server.starttls()
+                server.login(str(settings["smtp_user"]), str(settings["smtp_password"]))
+                server.send_message(email_message)
+        else:
+            with smtplib.SMTP_SSL(str(settings["smtp_host"]), int(settings["smtp_port"])) as server:
+                server.login(str(settings["smtp_user"]), str(settings["smtp_password"]))
+                server.send_message(email_message)
+    except Exception as exc:
         raise HTTPException(
             status_code=500,
-            detail=f"Почтовый API отклонил письмо: {exc.response.text}"
-        ) from exc
-    except httpx.HTTPError as exc:
-        raise HTTPException(
-            status_code=500,
-            detail=f"Не удалось отправить письмо через почтовый API: {exc}"
+            detail=f"Не удалось отправить письмо через SMTP: {exc}"
         ) from exc
 
 

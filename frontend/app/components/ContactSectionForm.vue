@@ -62,7 +62,7 @@ async function submitForm() {
     console.error(error)
     errorMessage.value =
       error?.data?.detail ||
-      'Не удалось отправить сообщение. Проверьте, что backend запущен и почтовый API настроен.'
+      'Не удалось отправить сообщение. Проверьте, что backend запущен и SMTP настроен.'
   } finally {
     pending.value = false
   }

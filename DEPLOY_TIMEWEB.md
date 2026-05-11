@@ -87,18 +87,25 @@ cp .env.example .env
 nano .env
 ```
 
-Для Brevo API заполните:
+Для Gmail SMTP заполните:
 
 ```env
 ALLOWED_ORIGINS=https://peraks.ru,https://www.peraks.ru
-MAIL_API_URL=https://api.brevo.com/v3/smtp/email
-MAIL_API_KEY=your-brevo-api-key
-MAIL_FROM=verified-sender@example.com
-MAIL_FROM_NAME=Peraks
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_STARTTLS=true
+SMTP_USER=your-mail@gmail.com
+SMTP_PASSWORD=your-google-app-password
+MAIL_FROM=your-mail@gmail.com
 MAIL_TO=recipient@example.com
 ```
 
-Важно: `MAIL_FROM` должен быть подтверждённым отправителем в Brevo.
+Важно:
+
+- `SMTP_PASSWORD` — это пароль приложения Google, а не обычный пароль Gmail.
+- Для Gmail с портом `587` нужно `SMTP_STARTTLS=true`.
+- Порты `465` и `587` должны быть открыты поддержкой Timeweb для исходящих подключений.
+- Если хотите использовать SSL-вариант, укажите `SMTP_PORT=465` и `SMTP_STARTTLS=false`.
 
 После заполнения закройте доступ к env-файлу:
 
@@ -348,3 +355,4 @@ Nginx:
 nginx -t
 journalctl -u nginx -n 100 --no-pager
 ```
+
