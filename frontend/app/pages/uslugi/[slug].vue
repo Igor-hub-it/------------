@@ -3,7 +3,7 @@ import { getServiceBySlug } from '~/utils/services'
 import serviceHandsIcon from '~/assets/icon/service-hands.svg'
 import serviceLightIcon from '~/assets/icon/service-ligth.svg'
 import serviceDocumentIcon from '~/assets/icon/service-document.svg'
-import serviceDollarIcon from '~/assets/icon/service-dollar.svg'
+import serviceDollarIcon from '~/assets/icon/ruble.svg'
 import howWork1 from '~/assets/icon/how-work-1.svg'
 import howWork2 from '~/assets/icon/how-work-2.svg'
 import howWork3 from '~/assets/icon/how-work-3.svg'
@@ -73,7 +73,8 @@ const heroUseCases = [
   {
     title: 'Получение страховки',
     description: 'Для определения стоимости страхования, давая защиту и уверенность в качестве.',
-    icon: serviceDollarIcon
+    icon: serviceDollarIcon,
+    isLargerIcon: true
   }
 ]
 
@@ -393,8 +394,16 @@ const cadastreObjectDetails = [
               :key="item.title"
               class="flex items-start gap-3 rounded-[16px] bg-[rgba(233,237,242,0)]  sm:p-4"
             >
-              <div class="flex h-5 w-5 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-full">
-                <img :src="item.icon" alt="" class="h-5 w-5 sm:h-6 sm:w-6 object-contain" />
+              <div
+                class="flex shrink-0 items-center justify-center rounded-full"
+                :class="item.isLargerIcon ? 'h-6 w-6 sm:h-7 sm:w-7' : 'h-5 w-5 sm:h-6 sm:w-6'"
+              >
+                <img
+                  :src="item.icon"
+                  alt=""
+                  class="object-contain"
+                  :class="item.isLargerIcon ? 'h-6 w-6 sm:h-7 sm:w-7' : 'h-5 w-5 sm:h-6 sm:w-6'"
+                />
               </div>
               <div>
                 <p class="text-[16px] font-medium leading-5 sm:leading-6 text-white [font-family:Inter,sans-serif]">{{ item.title }}</p>

@@ -36,7 +36,7 @@ import buildIcon from '~/assets/icon/builld.svg'
 import factoryIcon from '~/assets/icon/factory.svg'
 import clockIcon from '~/assets/icon/clock.svg'
 import landIcon from '~/assets/icon/land.svg'
-import dollarIcon from '~/assets/icon/dollar.svg'
+import dollarIcon from '~/assets/icon/ruble-teal.svg'
 import carIcon from '~/assets/icon/car.svg'
 
 useSeoMeta({
