@@ -67,8 +67,8 @@ const heroAdvantages = [
     icon: iconMain3
   },
   {
-    title: 'Гарантия 3 года',
-    description: 'Уверенность, подкрепленная гарантией качества',
+    title: 'Гарантия',
+    description: 'Точность и достоверность наших экспертных оценок',
     icon: iconMain4
   }
 ]
@@ -80,7 +80,7 @@ const keyAdvantages = [
     icon: advantages1
   },
   {
-    title: 'Профессиональный персонал',
+    title: 'Квалифицированные специалисты',
     description: 'Лицензированные и сертифицированные оценщики с высокой квалификацией',
     icon: advantages2
   },
@@ -105,13 +105,13 @@ const keyAdvantages = [
     icon: advantages6
   },
   {
-    title: 'Гарантия 3 года',
-    description: 'Мы гарантируем наши оценки всеобъемлющей гарантией',
+    title: 'Гарантия',
+    description: 'Мы гарантируем точность и достоверность наших экспертных оценок',
     icon: advantages7
   },
   {
     title: 'Быстрое выполнение',
-    description: 'Быстрая обработка для соблюдения ваших сроков',
+    description: 'Быстрая обработка заявок',
     icon: advantages8
   }
 ]
@@ -203,9 +203,9 @@ const directionPropertyGroups = [
   {
     title: 'Жилая недвижимость',
     items: [
-      'Квартира, комната, гостиница, кухня-прихожая, в т.ч доля в праве на них',
-      'Дом, коттедж, дача, таунхаус с земельным участком, в т.ч. доля в праве на них',
-      'Незавершенный строительством дом, коттедж, таунхаус, дача с зем. участком, в т.ч доля'
+      'Квартира, комната, гостиница, кухня-прихожая, в том числе доля в праве на них',
+      'Дом, коттедж, дача, таунхаус с земельным участком, в том числе доля в праве на них',
+      'Незавершенный строительством дом, коттедж, таунхаус, дача с зем. участком, в том числе доля'
     ]
   },
   {
@@ -213,8 +213,8 @@ const directionPropertyGroups = [
     items: [
       'Нежилые помещения',
       'Гараж, парк. место',
-      'Нежилое здание с зем. уч.',
-      'Незавершенное стр. нежилое здание с зем уч.'
+      'Нежилое здание с земельным участком',
+      'Незавершенное стр. нежилое здание с земельным участком'
     ]
   },
   {
@@ -224,7 +224,7 @@ const directionPropertyGroups = [
 ]
 
 const directionCadastreItems = [
-  'Зем уч любого назначения',
+  'Земельный участок любого назначения',
   'Нежилое здание',
   'Жилое помещение: квартира, комната, гостиница, кухня-прихожая',
   'Нежилое помещение',
@@ -259,28 +259,28 @@ const expertHighlights = [
 const team = [
   {
     initials: 'МК',
-    name: 'Мария Ковальски',
+    name: 'Мария',
     role: 'Старший оценщик недвижимости',
     experience: 'Лицензированный оценщик • 15 лет опыта',
     specialty: 'Специализация: Жилая и коммерческая недвижимость'
   },
   {
     initials: 'ЯН',
-    name: 'Ян Новак',
-    role: 'Главный директор по оценке',
+    name: 'Сергей',
+    role: 'Директор по оценке',
     experience: 'Сертифицированный мастер-оценщик • 20 лет опыта',
     specialty: 'Специализация: Сложные объекты и земля'
   },
   {
     initials: 'АВ',
-    name: 'Анна Вишневская',
+    name: 'Екатерина',
     role: 'Специалист по коммерческой недвижимости',
     experience: 'Лицензированный оценщик • 12 лет опыта',
     specialty: 'Специализация: Торговые и офисные площади'
   },
   {
     initials: 'ПК',
-    name: 'Пётр Ковальчик',
+    name: 'Павел',
     role: 'Специалист по земле и сельскому хозяйству',
     experience: 'Лицензированный оценщик • 18 лет опыта',
     specialty: 'Специализация: Земельные участки и фермы'
@@ -295,28 +295,28 @@ const expertCertificationNote = {
 
 const reviews = [
   {
-    author: 'Роберт Левандовски',
+    author: 'Иван Дубровский',
     role: 'Домовладелец',
     date: 'Январь 2026',
     rating: 5,
     text: '"Отличный сервис от начала до конца. Оценщик был профессиональным, тщательным и предоставил отчет раньше срока. Настоятельно рекомендую всем, кому нужна оценка недвижимости."'
   },
   {
-    author: 'Елена Ковальска',
+    author: 'Елена Курчатова',
     role: 'Инвестор в недвижимость',
     date: 'Декабрь 2025',
     rating: 5,
     text: '"Я пользовалась их услугами несколько раз для своих инвестиционных объектов. Стабильно точные оценки и быстрая обработка. Процесс онлайн-заявки очень удобен."'
   },
   {
-    author: 'Томаш Новицкий',
+    author: 'Алексей Козлов',
     role: 'Владелец бизнеса',
     date: 'Ноябрь 2025',
     rating: 5,
     text: '"Нужна была оценка коммерческой недвижимости для банковского кредита. Команда была осведомлена о коммерческой недвижимости и предоставила полный отчет, соответствующий всем требованиям."'
   },
   {
-    author: 'Магдалена Войчик',
+    author: 'Мария Михайлова',
     role: 'Юридический представитель',
     date: 'Октябрь 2025',
     rating: 5,
@@ -344,6 +344,16 @@ type PriceItem = {
   groupLabel?: string
   entries?: PriceEntry[]
 }
+
+type PropertyType =
+  | 'Жилая недвижимость'
+  | 'Нежилые помещения'
+  | 'Нежилые здания с земельным участком'
+  | 'Гаражи и парковки'
+  | 'Незавершённые нежилые здания'
+  | 'Земельные участки'
+  | 'Оценка для снижения кадастровой стоимости'
+  | 'Движимое имущество'
 
 const priceList = [
   {
@@ -400,6 +410,18 @@ const priceList = [
     ]
   },
   {
+    title: 'Оценка движимого имущества',
+    price: 'от 8 000 руб.',
+    description: 'Транспортные средства, оборудование, техника и другие движимые активы.',
+    icon: carIcon,
+    groupLabel: 'Движимое имущество',
+    entries: [
+      { name: 'Транспортные средства', note: 'рыночная стоимость', price: '' },
+      { name: 'Оборудование и техника', note: 'рыночная стоимость', price: '' },
+      { name: 'Прочие движимые активы', note: 'рыночная стоимость', price: '' }
+    ]
+  },
+  {
     title: 'Оценка незавершённого строительства',
     price: 'от 21 000 руб.',
     description: 'Незавершённые нежилые здания различной площади с земельными участками.',
@@ -450,6 +472,29 @@ const pricingOpenStates = ref(priceList.map((_, index) => index === 1))
 const togglePricingAccordion = (index: number) => {
   pricingOpenStates.value[index] = !pricingOpenStates.value[index]
 }
+
+const buildPricingComment = (item: PriceItem, entry: PriceEntry) =>
+  [
+    `Категория: ${item.groupLabel || item.title}`,
+    `Название блока: ${item.title}`,
+    `Цена: ${entry.price}`
+  ].join('\n')
+
+const isPropertyType = (value?: string): value is PropertyType =>
+  !!value &&
+  [
+    'Жилая недвижимость',
+    'Нежилые помещения',
+    'Нежилые здания с земельным участком',
+    'Гаражи и парковки',
+    'Незавершённые нежилые здания',
+    'Земельные участки',
+    'Оценка для снижения кадастровой стоимости',
+    'Движимое имущество'
+  ].includes(value)
+
+const getPricingPropertyType = (item: PriceItem): PropertyType =>
+  isPropertyType(item.groupLabel) ? item.groupLabel : 'Жилая недвижимость'
 
 const aboutFeatures = [
   {
@@ -778,7 +823,7 @@ const companyStats = [
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="text-[28px] sm:text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
-          Наши направления в виде схемы
+          Наши направления
         </h2>
         <p class="mt-2 sm:mt-4 text-[14px] sm:text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
           Полный перечень всех работ по оценке
@@ -1006,7 +1051,7 @@ const companyStats = [
       <div class="container-default">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="text-[28px] sm:text-[36px] font-semibold tracking-tight text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
-          Прейскурант
+          Прайс
         </h2>
         <p class="mx-auto mt-2 sm:mt-4 max-w-2xl text-[14px] sm:text-[18px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
           Лицензированные профессионалы с подтвержденным опытом и признанием в отрасли
@@ -1076,13 +1121,20 @@ const companyStats = [
                     <p class="min-w-[90px] text-[32px] font-medium leading-none text-[rgba(31,58,95,1)] [font-family:Inter,sans-serif]">
                       {{ entry.price }}
                     </p>
-                    <a
+                    <NuxtLink
                       class="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[#2fa4a9] px-6 text-[16px] font-medium text-white transition sm:hover:bg-[#289299]"
-                      href="#contact-form"
+                      :to="{
+                        path: '/',
+                        hash: '#contact-form',
+                        query: {
+                          presetComment: buildPricingComment(item, entry),
+                          presetPropertyType: getPricingPropertyType(item)
+                        }
+                      }"
                     >
                       Подать заявку
                       <Icon class="h-5 w-5" name="lucide:arrow-right" />
-                    </a>
+                    </NuxtLink>
                   </div>
                 </div>
               </div>

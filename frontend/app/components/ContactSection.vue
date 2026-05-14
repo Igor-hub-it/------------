@@ -21,15 +21,18 @@ defineProps<{
 const contacts = [
   {
     title: 'Название компании',
-    value: 'ООО "ПЕРЭКС-ОЦЕНКА"',
-    note: 'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "ПЕРЭКС-ОЦЕНКА"',
+    value: 'ООО "ПЕРАКС-ОЦЕНКА"',
+    note: 'ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "ПЕРАКС-ОЦЕНКА"',
     icon: 'pin'
   },
   {
     title: 'Телефоны',
     value: '8-923-168-88-10',
-    note: '8-960-948-82-92 • 8-923-161-69-13',
     href: 'tel:+79231688810',
+    phones: [
+      { label: '8-960-948-82-92', href: 'tel:+79609488292' },
+      { label: '8-923-161-69-13', href: 'tel:+79231616913' }
+    ],
     icon: 'phone'
   },
   {
@@ -52,6 +55,12 @@ const urgentService = {
   description: 'Нужна срочная оценка недвижимости? Мы предлагаем экспресс-услугу с выполнением за 48 часов.',
   action: 'Запросить срочную услугу',
   href: 'tel:+79231688810'
+}
+
+const callUrgentService = () => {
+  if (import.meta.client) {
+    window.location.href = urgentService.href
+  }
 }
 </script>
 
@@ -92,7 +101,20 @@ const urgentService = {
                   <p v-else class="mt-1 text-[16px] font-normal leading-7 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">
                     {{ item.value }}
                   </p>
-                  <p class="text-[14px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">{{ item.note }}</p>
+                  <div
+                    v-if="item.phones"
+                    class="space-y-1 text-[14px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]"
+                  >
+                    <a
+                      v-for="phone in item.phones"
+                      :key="phone.href"
+                      :href="phone.href"
+                      class="block transition hover:text-[rgba(31,58,95,1)]"
+                    >
+                      {{ phone.label }}
+                    </a>
+                  </div>
+                  <p v-else class="text-[14px] font-normal leading-6 text-[rgba(107,119,133,1)] [font-family:Inter,sans-serif]">{{ item.note }}</p>
                 </div>
               </div>
             </div>
@@ -104,6 +126,7 @@ const urgentService = {
             <a
               class="mt-5 inline-flex rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-[#37b5bd] transition hover:bg-slate-100"
               :href="urgentService.href"
+              @click.prevent="callUrgentService"
             >
               {{ urgentService.action }}
             </a>

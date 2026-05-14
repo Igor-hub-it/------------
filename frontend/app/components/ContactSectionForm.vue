@@ -4,14 +4,24 @@ const props = defineProps<{
 }>()
 
 const config = useRuntimeConfig()
+const route = useRoute()
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i
 
 const propertyTypes = [
   'Жилая недвижимость',
+  'Нежилые помещения',
+  'Нежилые здания с земельным участком',
+  'Гаражи и парковки',
+  'Незавершённые нежилые здания',
+  'Земельные участки',
+  'Оценка для снижения кадастровой стоимости',
+  'Движимое имущество',
   'Нежилая недвижимость',
   'Земельный участок',
-  'Движимое имущество',
   'Кадастровая стоимость'
-]
+] as const
+
+type PropertyType = (typeof propertyTypes)[number]
 
 const form = reactive({
   name: '',
@@ -34,10 +44,70 @@ const pending = ref(false)
 const successMessage = ref('')
 const errorMessage = ref('')
 
+type QueryValue = string | null | (string | null)[] | undefined
+
+const getSingleQueryValue = (value?: QueryValue) => {
+  if (Array.isArray(value)) {
+    return value[0] || ''
+  }
+
+  return value || ''
+}
+
+const isPropertyType = (value: string): value is PropertyType =>
+  propertyTypes.includes(value as PropertyType)
+
+const applyPresetPropertyTypeFromQuery = (value?: QueryValue) => {
+  const presetPropertyType = getSingleQueryValue(value).trim()
+
+  if (isPropertyType(presetPropertyType)) {
+    form.propertyType = presetPropertyType
+  }
+}
+
+const applyPresetMessageFromQuery = (value?: QueryValue) => {
+  const presetMessage = getSingleQueryValue(value).trim()
+
+  if (presetMessage) {
+    form.message = presetMessage
+  }
+}
+
+const normalizePhone = (input: string) => {
+  const digits = input.replace(/\D/g, '')
+
+  if (!digits) {
+    return ''
+  }
+
+  let normalizedDigits = digits
+
+  if (normalizedDigits.startsWith('8')) {
+    normalizedDigits = `7${normalizedDigits.slice(1)}`
+  }
+
+  if (!normalizedDigits.startsWith('7')) {
+    normalizedDigits = `7${normalizedDigits}`
+  }
+
+  return `+${normalizedDigits.slice(0, 11)}`
+}
+
+const handlePhoneInput = () => {
+  form.phone = normalizePhone(form.phone)
+}
+
 async function submitForm() {
-  pending.value = true
+  const normalizedEmail = form.email.trim()
   successMessage.value = ''
   errorMessage.value = ''
+
+  if (!EMAIL_REGEX.test(normalizedEmail)) {
+    errorMessage.value = 'Введите корректный email, например example@mail.com'
+    return
+  }
+
+  pending.value = true
 
   try {
     await $fetch('/api/applications', {
@@ -45,7 +115,7 @@ async function submitForm() {
       method: 'POST',
       body: {
         name: form.name.trim(),
-        email: form.email.trim(),
+        email: normalizedEmail,
         phone: form.phone.trim(),
         property_type: form.propertyType.trim() || 'Не указано',
         message: form.message.trim()
@@ -58,6 +128,8 @@ async function submitForm() {
     form.phone = ''
     form.propertyType = props.presetPropertyType || ''
     form.message = ''
+    applyPresetPropertyTypeFromQuery(route.query.presetPropertyType)
+    applyPresetMessageFromQuery(route.query.presetComment)
   } catch (error: any) {
     console.error(error)
     errorMessage.value =
@@ -67,6 +139,25 @@ async function submitForm() {
     pending.value = false
   }
 }
+
+onMounted(() => {
+  applyPresetPropertyTypeFromQuery(route.query.presetPropertyType)
+  applyPresetMessageFromQuery(route.query.presetComment)
+})
+
+watch(
+  () => route.query.presetPropertyType,
+  (value) => {
+    applyPresetPropertyTypeFromQuery(value)
+  }
+)
+
+watch(
+  () => route.query.presetComment,
+  (value) => {
+    applyPresetMessageFromQuery(value)
+  }
+)
 </script>
 
 <template>
@@ -92,22 +183,45 @@ async function submitForm() {
 
       <label class="block">
         <span class="mb-2 block text-[16px] font-medium text-[rgba(31,58,95,1)]">Телефон *</span>
-        <input v-model="form.phone" class="input-base rounded-[12px] border-slate-300" minlength="6" placeholder="+7 (__) ___-_-__" required type="tel" />
+        <input
+          v-model="form.phone"
+          class="input-base rounded-[12px] border-slate-300"
+          minlength="12"
+          placeholder="+7 (__) ___-_-__"
+          required
+          type="tel"
+          @input="handlePhoneInput"
+        />
       </label>
 
       <label class="block md:col-span-2">
         <span class="mb-2 block text-[16px] font-medium text-[rgba(31,58,95,1)]">Email *</span>
-        <input v-model="form.email" class="input-base rounded-[12px] border-slate-300" placeholder="example@mail.com" required type="email" />
+        <input
+          v-model="form.email"
+          class="input-base rounded-[12px] border-slate-300"
+          placeholder="example@mail.com"
+          required
+          type="email"
+        />
       </label>
 
       <label class="block md:col-span-2">
-        <span class="mb-2 block text-[16px] font-medium text-[rgba(31,58,95,1)]">Тип недвижимости *</span>
-        <select v-model="form.propertyType" class="input-base rounded-[12px] border-slate-300" required>
-          <option disabled value="">Выберите тип объекта</option>
-          <option v-for="item in propertyTypes" :key="item" :value="item">
-            {{ item }}
-          </option>
-        </select>
+        <span class="mb-2 block text-[16px] font-medium text-[rgba(31,58,95,1)]">Объект оценки *</span>
+        <div class="relative">
+          <select
+            v-model="form.propertyType"
+            class="input-base w-full appearance-none rounded-[12px] border border-slate-300 bg-slate-50 px-4 py-3 pr-12 text-[15px] font-medium text-[rgba(31,58,95,1)] outline-none transition focus:border-[#37b5bd] focus:bg-white focus:ring-2 focus:ring-[#37b5bd]/20"
+            required
+          >
+            <option disabled value="">Выберите объект оценки</option>
+            <option v-for="item in propertyTypes" :key="item" :value="item">
+              {{ item }}
+            </option>
+          </select>
+          <span class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-[rgba(31,58,95,0.7)]">
+            <Icon class="h-5 w-5" name="lucide:chevrons-up-down" />
+          </span>
+        </div>
       </label>
 
       <label class="block md:col-span-2">

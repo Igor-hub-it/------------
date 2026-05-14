@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const navigation = [
   { label: 'О компании', to: '/#about' },
-  { label: 'Услуги оценки', to: '/#services' },
+  // { label: 'Услуги оценки', to: '/#services' },
   { label: 'Услуги', to: '/#main-services' },
   { label: 'Цены', to: '/#pricing' },
   { label: 'Контакты', to: '/#contacts' }
@@ -43,8 +43,8 @@ onBeforeUnmount(() => {
     <div class="mx-auto flex h-[53px] sm:h-[75px] w-full max-w-[1260px] items-center gap-8 px-4 sm:px-6">
       <div class="flex min-w-0 flex-1 items-center gap-8 xl:gap-10">
         <NuxtLink to="/" aria-label="На главную" class="flex h-[53px] w-[170px] shrink-0 items-center" @click="closeMobileMenu">
-          <img src="/image/logo-mobile.png" alt="ПЕРЭКС-ОЦЕНКА" class="h-[40px] w-[110px] object-contain lg:hidden" />
-          <img src="/image/logo.png" alt="ПЕРЭКС-ОЦЕНКА" class="hidden h-[53px] w-[131px] object-contain lg:block" />
+          <img src="/image/logo-mobile.png" alt="ПЕРАКС-ОЦЕНКА" class="h-[40px] w-[110px] object-contain lg:hidden" />
+          <img src="/image/logo.png" alt="ПЕРАКС-ОЦЕНКА" class="hidden h-[53px] w-[131px] object-contain lg:block" />
         </NuxtLink>
 
         <nav aria-label="Основная навигация" class="hidden min-w-0 flex-1 lg:block">
@@ -127,6 +127,15 @@ onBeforeUnmount(() => {
             </li>
           </ul>
         </nav>
+
+        <a
+          href="tel:+79609488292"
+          class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-[10px] border border-white/25 px-4 py-3 text-[15px] font-medium text-white transition hover:bg-white/10 [font-family:Inter,sans-serif]"
+          @click="closeMobileMenu"
+        >
+          <Icon class="h-4 w-4" name="lucide:phone" />
+          +7 960 948 82 92
+        </a>
 
         <NuxtLink
           class="mt-4 inline-flex h-11 w-full items-center justify-center rounded-[10px] bg-[#37b5bd] px-7 text-[14px] font-semibold text-white transition hover:bg-[#2fa3aa]"

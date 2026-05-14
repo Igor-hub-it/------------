@@ -9,9 +9,15 @@ const config = useRuntimeConfig()
 
 const propertyTypes = [
   'Жилая недвижимость',
+  'Нежилые помещения',
+  'Нежилые здания с земельным участком',
+  'Гаражи и парковки',
+  'Незавершённые нежилые здания',
+  'Земельные участки',
+  'Оценка для снижения кадастровой стоимости',
+  'Движимое имущество',
   'Нежилая недвижимость',
   'Земельный участок',
-  'Движимое имущество',
   'Кадастровая стоимость'
 ]
 const defaultPropertyType = propertyTypes[0] ?? 'Жилая недвижимость'
@@ -102,7 +108,7 @@ async function submitForm() {
       </label>
 
       <label class="block">
-        <span class="mb-2 block text-sm text-slate-600">Тип недвижимости</span>
+        <span class="mb-2 block text-sm text-slate-600">Объект оценки</span>
         <select v-model="form.propertyType" class="input-base" name="propertyType" required>
           <option v-for="item in propertyTypes" :key="item" :value="item">
             {{ item }}

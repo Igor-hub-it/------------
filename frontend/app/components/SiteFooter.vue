@@ -6,7 +6,7 @@
           <h3 class="text-[18px] font-semibold leading-7 text-[rgba(255,255,255,1)] [font-family:Inter,sans-serif]">
             ОБЩЕСТВО С ОГРАНИЧЕННОЙ
             <br />
-            ОТВЕТСТВЕННОСТЬЮ "ПЕРЭКС-ОЦЕНКА"
+            ОТВЕТСТВЕННОСТЬЮ "ПЕРАКС-ОЦЕНКА"
           </h3>
           <p class="mt-5 text-[14px] font-normal leading-6 text-[rgba(255,255,255,0.7)] [font-family:Inter,sans-serif]">
             Профессиональные услуги кадастровой оценки недвижимости с общенациональным охватом.
