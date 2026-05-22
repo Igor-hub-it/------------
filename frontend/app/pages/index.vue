@@ -10,7 +10,7 @@ import about3 from '~/assets/icon/about-3.svg'
 import advantages1 from '~/assets/icon/advantages-1.svg'
 import advantages2 from '~/assets/icon/advantages-2.svg'
 import advantages3 from '~/assets/icon/advantages-3.svg'
-import advantages4 from '~/assets/icon/advantages-4.svg'
+import advantages4 from '~/assets/icon/ruble-blue.svg'
 import advantages5 from '~/assets/icon/advantages-5.svg'
 import advantages6 from '~/assets/icon/advantages-6.svg'
 import advantages7 from '~/assets/icon/advantages-7.svg'
@@ -133,8 +133,8 @@ const reasons = [
     icon: select3
   },
   {
-    title: 'Широкая сеть экспертов',
-    description: 'Доступ к специализированным оценщикам для любого типа недвижимости',
+    title: 'Высококвалифицированные специалисты',
+    description: 'Наличие специалистов для любого типа экспертизы',
     icon: select4
   },
   {

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import logo from '~/assets/icon/logo.svg'
+import logoMobile from '~/assets/icon/logo-mobile.svg'
+
 const navigation = [
   { label: 'О компании', to: '/#about' },
   // { label: 'Услуги оценки', to: '/#services' },
@@ -43,8 +46,8 @@ onBeforeUnmount(() => {
     <div class="mx-auto flex h-[53px] sm:h-[75px] w-full max-w-[1260px] items-center gap-8 px-4 sm:px-6">
       <div class="flex min-w-0 flex-1 items-center gap-8 xl:gap-10">
         <NuxtLink to="/" aria-label="На главную" class="flex h-[53px] w-[170px] shrink-0 items-center" @click="closeMobileMenu">
-          <img src="/image/logo-mobile.png" alt="ПЕРАКС-ОЦЕНКА" class="h-[40px] w-[110px] object-contain lg:hidden" />
-          <img src="/image/logo.png" alt="ПЕРАКС-ОЦЕНКА" class="hidden h-[53px] w-[131px] object-contain lg:block" />
+          <img :src="logoMobile" alt="ПЕРАКС-ОЦЕНКА" class="h-[40px] w-[110px] object-contain lg:hidden" />
+          <img :src="logo" alt="ПЕРАКС-ОЦЕНКА" class="hidden h-[53px] w-[131px] object-contain lg:block" />
         </NuxtLink>
 
         <nav aria-label="Основная навигация" class="hidden min-w-0 flex-1 lg:block">
