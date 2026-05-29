@@ -6,7 +6,7 @@
           <h3 class="text-[18px] font-semibold leading-7 text-[rgba(255,255,255,1)] [font-family:Inter,sans-serif]">
             ОБЩЕСТВО С ОГРАНИЧЕННОЙ
             <br />
-            ОТВЕТСТВЕННОСТЬЮ "ПЕРАКС-ОЦЕНКА"
+            ОТВЕТСТВЕННОСТЬЮ "ПЕРЭКС-ОЦЕНКА"
           </h3>
           <p class="mt-5 text-[14px] font-normal leading-6 text-[rgba(255,255,255,0.7)] [font-family:Inter,sans-serif]">
             Профессиональные услуги кадастровой оценки недвижимости с общенациональным охватом.
@@ -71,7 +71,7 @@
       <div class="mt-10 border-t border-[rgba(255,255,255,0.12)] pt-6">
         <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
           <p class="text-[14px] font-normal text-[rgba(255,255,255,0.7)] [font-family:Inter,sans-serif]">
-            © 2026 Перакс оценка. Все права защищены.
+            © 2026 Перэкс оценка. Все права защищены.
           </p>
           <div class="flex flex-wrap gap-6">
             <a class="text-[14px] font-normal text-[rgba(255,255,255,0.7)] transition hover:text-white [font-family:Inter,sans-serif]" href="#">Условия предоставления услуг</a>
